@@ -135,6 +135,9 @@ Sistemin yönetildiği panelden takım, stadyum ve oyuncu kayıtları oluşturul
 <summary><b>🔐 Admin Panel</b></summary>
 <br>
 
+**Admin Dashboard**
+<img src="GoalZone/GoalZone.WebUI/wwwroot/images/Admin Dashboard.png" alt="Admin Dashboard" width="100%">
+
 **Maç Listesi**
 <img src="GoalZone/GoalZone.WebUI/wwwroot/images/Maç Listesi.png" alt="Maç Listesi" width="100%">
 
