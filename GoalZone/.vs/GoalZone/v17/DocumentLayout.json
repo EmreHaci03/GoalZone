@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ersin\\source\\repos\\GoalZone\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AA5FBE23-4FEB-4DCF-8D16-2093394815FA}|GoalZone.DataAccessLayer\\GoalZone.DataAccessLayer.csproj|c:\\users\\ersin\\source\\repos\\goalzone\\goalzone.dataaccesslayer\\context\\goalzonecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA5FBE23-4FEB-4DCF-8D16-2093394815FA}|GoalZone.DataAccessLayer\\GoalZone.DataAccessLayer.csproj|solutionrelative:goalzone.dataaccesslayer\\context\\goalzonecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GoalZoneContext.cs",
+              "DocumentMoniker": "C:\\Users\\ersin\\source\\repos\\GoalZone\\GoalZone.DataAccessLayer\\Context\\GoalZoneContext.cs",
+              "RelativeDocumentMoniker": "GoalZone.DataAccessLayer\\Context\\GoalZoneContext.cs",
+              "ToolTip": "C:\\Users\\ersin\\source\\repos\\GoalZone\\GoalZone.DataAccessLayer\\Context\\GoalZoneContext.cs",
+              "RelativeToolTip": "GoalZone.DataAccessLayer\\Context\\GoalZoneContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T19:12:36.465Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

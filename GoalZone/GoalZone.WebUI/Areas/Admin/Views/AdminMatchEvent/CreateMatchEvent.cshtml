@@ -1,0 +1,461 @@
+﻿@using GoalZone.EntityLayer.Enums
+@model CreateMatchEventDto
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <span class="accent">MAÇ OLAYI</span> EKLE
+            </h1>
+
+            <div class="breadcrumb-custom">
+                <a href="/Admin/AdminDashboard/Index/">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Maç Olayları</span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Olay Ekle</span>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="event-create-container">
+
+    <form asp-area="Admin"
+          asp-controller="AdminMatchEvent"
+          asp-action="CreateMatchEvent"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+        <!-- SOL TARAF -->
+        <div class="event-main">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon">
+                        <i class="fa-solid fa-flag"></i>
+                    </div>
+
+                    <div>
+                        <h3>Olay Bilgileri</h3>
+                        <span>Maçta gerçekleşen olayı gir</span>
+                    </div>
+                </div>
+
+                <!-- Maç -->
+                <div class="form-group">
+                    <label asp-for="FootballMatchId">Maç</label>
+
+                    <select asp-for="FootballMatchId"
+                            class="form-control-custom"
+                            asp-items="ViewBag.Matches">
+
+                        <option value="">Maç seçiniz</option>
+
+                    </select>
+
+                    <span asp-validation-for="FootballMatchId"
+                          class="field-error"></span>
+                </div>
+
+                <!-- Oyuncu -->
+                <div class="form-group">
+
+                    <label asp-for="PlayerName">Oyuncu Adı</label>
+
+                    <input asp-for="PlayerName"
+                           class="form-control-custom"
+                           placeholder="Örn: Bruno Fernandes" />
+
+                    <small class="form-help">
+                        Oyuncu ismini elle girebilirsin.
+                    </small>
+
+                    <span asp-validation-for="PlayerName"
+                          class="field-error"></span>
+
+                </div>
+
+                <div class="two-column">
+
+                    <!-- Olay Tipi -->
+                    <div class="form-group">
+
+                        <label asp-for="EventType">Olay Tipi</label>
+
+                        <select asp-for="EventType"
+                                class="form-control-custom"
+                                asp-items="Html.GetEnumSelectList<EventType>()">
+
+                            <option value="">Olay tipi seçiniz</option>
+
+                        </select>
+
+                        <span asp-validation-for="EventType"
+                              class="field-error"></span>
+
+                    </div>
+
+                    <!-- Dakika -->
+                    <div class="form-group">
+
+                        <label asp-for="Minute">Dakika</label>
+
+                        <input asp-for="Minute"
+                               type="number"
+                               min="1"
+                               max="120"
+                               class="form-control-custom"
+                               placeholder="Örn: 45" />
+
+                        <span asp-validation-for="Minute"
+                              class="field-error"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAĞ TARAF -->
+        <div class="event-sidebar">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="header-icon green">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+
+                    <div>
+                        <h3>Olay Özeti</h3>
+                        <span>Maç olayını kontrol et</span>
+                    </div>
+
+                </div>
+
+                <div class="event-info-item">
+                    <div class="event-info-icon">
+                        <i class="fa-solid fa-futbol"></i>
+                    </div>
+
+                    <div>
+                        <span>Olay</span>
+                        <strong>Maç içerisinde gerçekleşen olay</strong>
+                    </div>
+                </div>
+
+                <div class="event-info-item">
+                    <div class="event-info-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+                        <span>Oyuncu</span>
+                        <strong>Oyuncu adı girilebilir</strong>
+                    </div>
+                </div>
+
+                <div class="event-info-item">
+                    <div class="event-info-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <span>Dakika</span>
+                        <strong>1 - 120 dakika arası</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <a href="/Admin/AdminMatchEvent/MatchEventList/"
+                   class="btn-cancel">
+
+                    <i class="fa-solid fa-xmark"></i>
+                    İptal
+
+                </a>
+
+                <button type="submit"
+                        class="btn-submit">
+
+                    <i class="fa-solid fa-plus"></i>
+                    Olayı Ekle
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Styles {
+    <style>
+
+        .event-create-container {
+            width: 100%;
+        }
+
+            .event-create-container form {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 360px;
+                gap: 24px;
+                align-items: start;
+            }
+
+        .event-main,
+        .event-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-card {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px;
+        }
+
+        .form-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 20px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .form-card-header h3 {
+                margin: 0;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            .form-card-header span {
+                display: block;
+                color: var(--text-muted);
+                font-size: 12px;
+                margin-top: 3px;
+            }
+
+        .header-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(0, 255, 135, .1);
+            color: var(--pl-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+            .header-icon.green {
+                background: rgba(0, 255, 135, .1);
+                color: var(--pl-accent);
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group:last-child {
+                margin-bottom: 0;
+            }
+
+            .form-group label {
+                display: block;
+                color: var(--text-secondary);
+                font-size: 13px;
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+
+        .form-control-custom {
+            width: 100%;
+            background: var(--dark-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 11px 13px;
+            color: white;
+            font-size: 13px;
+            outline: none;
+            transition: .2s;
+        }
+
+            .form-control-custom:focus {
+                border-color: var(--pl-accent);
+                box-shadow: 0 0 0 3px rgba(0,255,135,.07);
+            }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-help {
+            display: block;
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-top: 6px;
+        }
+
+        .field-error {
+            display: block;
+            color: #ff4d6d;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .validation-summary {
+            grid-column: 1 / -1;
+            color: #ff4d6d;
+            margin-bottom: -5px;
+        }
+
+
+        /* SAĞ TARAF BİLGİLERİ */
+
+        .event-info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .event-info-item:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+        .event-info-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(0, 255, 135, .08);
+            color: var(--pl-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .event-info-item span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-bottom: 3px;
+        }
+
+        .event-info-item strong {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+
+        /* BUTONLAR */
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-cancel,
+        .btn-submit {
+            flex: 1;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+            .btn-cancel:hover {
+                color: white;
+                background: var(--dark-hover);
+            }
+
+        .btn-submit {
+            border: none;
+            color: white;
+            background: linear-gradient( 135deg, var(--pl-purple), var(--pl-pink) );
+        }
+
+            .btn-submit:hover {
+                color: white;
+                transform: translateY(-1px);
+                box-shadow: 0 6px 20px rgba(233,0,82,.3);
+            }
+
+
+        /* RESPONSIVE */
+
+        @@media(max - width: 1000px)
+
+        {
+            .event-create-container form
+
+        {
+            grid-template-columns: 1fr;
+        }
+
+        }
+
+        @@media(max - width: 600px)
+
+        {
+            .two-column
+
+        {
+            grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        }
+
+    </style>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

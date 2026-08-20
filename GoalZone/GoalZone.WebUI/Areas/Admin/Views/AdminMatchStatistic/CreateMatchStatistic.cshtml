@@ -1,0 +1,334 @@
+﻿@model CreateMatchStatisticDto
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <span class="accent">MAÇ İSTATİSTİĞİ</span> EKLE
+            </h1>
+
+            <div class="breadcrumb-custom">
+                <a href="/Admin/AdminDashboard/Index/">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Maç İstatistikleri</span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>İstatistik Ekle</span>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="news-create-container">
+
+    <form asp-area="Admin"
+          asp-controller="AdminMatchStatistic"
+          asp-action="CreateMatchStatistic"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+        <!-- SOL TARAF -->
+        <div class="news-main">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
+                    <div>
+                        <h3>İstatistik Bilgileri</h3>
+                        <span>İstatistik türü ve değerlerini gir</span>
+                    </div>
+                </div>
+
+                <!-- İstatistik Türü -->
+                <div class="form-group">
+                    <label asp-for="StatName">İstatistik Türü</label>
+                    <select asp-for="StatName" class="form-control-custom">
+                        <option value="">İstatistik seçiniz</option>
+                        <option value="Topla Oynama">Topla Oynama (%)</option>
+                        <option value="Şut">Şut</option>
+                        <option value="İsabetli Şut">İsabetli Şut</option>
+                        <option value="Korner">Korner</option>
+                        <option value="Faul">Faul</option>
+                        <option value="Ofsayt">Ofsayt</option>
+                        <option value="Sarı Kart">Sarı Kart</option>
+                        <option value="Kırmızı Kart">Kırmızı Kart</option>
+                        <option value="Pas">Pas</option>
+                        <option value="İsabetli Pas">İsabetli Pas</option>
+                        <option value="Kaleci Kurtarışı">Kaleci Kurtarışı</option>
+                    </select>
+                    <span asp-validation-for="StatName" class="field-error"></span>
+                </div>
+
+                <!-- Değerler -->
+                <div class="two-column">
+
+                    <div class="form-group">
+                        <label asp-for="HomeValue">Ev Sahibi Değeri</label>
+                        <input asp-for="HomeValue"
+                               type="number"
+                               min="0"
+                               class="form-control-custom"
+                               placeholder="Örn: 60" />
+                        <span asp-validation-for="HomeValue" class="field-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="AwayValue">Deplasman Değeri</label>
+                        <input asp-for="AwayValue"
+                               type="number"
+                               min="0"
+                               class="form-control-custom"
+                               placeholder="Örn: 40" />
+                        <span asp-validation-for="AwayValue" class="field-error"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAĞ TARAF -->
+        <div class="news-sidebar">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon green">
+                        <i class="fa-solid fa-futbol"></i>
+                    </div>
+                    <div>
+                        <h3>Maç</h3>
+                        <span>İstatistiğin maçını seç</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FootballMatchId">Maç</label>
+                    <select asp-for="FootballMatchId"
+                            class="form-control-custom"
+                            asp-items="ViewBag.Matches">
+                        <option value="">Maç seçiniz</option>
+                    </select>
+                    <span asp-validation-for="FootballMatchId" class="field-error"></span>
+
+                    <small class="form-help">
+                        İstatistiğin ait olduğu maçı seç.
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+                <a href="/Admin/AdminMatchStatistic/MatchStatisticList/" class="btn-cancel">
+                    <i class="fa-solid fa-xmark"></i>
+                    İptal
+                </a>
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-plus"></i>
+                    İstatistiği Ekle
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+@section Styles {
+    <style>
+
+        .news-create-container {
+            width: 100%;
+        }
+
+            .news-create-container form {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 380px;
+                gap: 24px;
+                align-items: start;
+            }
+
+        .news-main,
+        .news-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-card {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px;
+        }
+
+        .form-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 20px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .form-card-header h3 {
+                margin: 0;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            .form-card-header span {
+                display: block;
+                color: var(--text-muted);
+                font-size: 12px;
+                margin-top: 3px;
+            }
+
+        .header-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(0, 255, 135, .1);
+            color: var(--pl-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .header-icon.green {
+                background: rgba(0, 255, 135, .1);
+                color: var(--pl-accent);
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group:last-child {
+                margin-bottom: 0;
+            }
+
+            .form-group label {
+                display: block;
+                color: var(--text-secondary);
+                font-size: 13px;
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+
+        .form-control-custom {
+            width: 100%;
+            background: var(--dark-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 11px 13px;
+            color: white;
+            font-size: 13px;
+            outline: none;
+            transition: .2s;
+        }
+
+            .form-control-custom:focus {
+                border-color: var(--pl-accent);
+                box-shadow: 0 0 0 3px rgba(0,255,135,.07);
+            }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-help {
+            display: block;
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-top: 6px;
+        }
+
+        .field-error {
+            display: block;
+            color: #ff4d6d;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .validation-summary {
+            color: #ff4d6d;
+            margin-bottom: 15px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-cancel, .btn-submit {
+            flex: 1;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+            .btn-cancel:hover {
+                color: white;
+                background: var(--dark-hover);
+            }
+
+        .btn-submit {
+            border: none;
+            color: white;
+            background: linear-gradient(135deg, var(--pl-purple), var(--pl-pink));
+        }
+
+            .btn-submit:hover {
+                color: white;
+                transform: translateY(-1px);
+                box-shadow: 0 6px 20px rgba(233,0,82,.3);
+            }
+
+        @@media(max-width: 1000px) {
+            .news-create-container form {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,15 @@
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\bin\Debug\net8.0\GoalZone.DtoLayer.deps.json
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\bin\Debug\net8.0\GoalZone.DtoLayer.dll
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\bin\Debug\net8.0\GoalZone.DtoLayer.pdb
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\bin\Debug\net8.0\GoalZone.EntityLayer.dll
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\bin\Debug\net8.0\GoalZone.EntityLayer.pdb
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\obj\Debug\net8.0\GoalZone.DtoLayer.csproj.AssemblyReference.cache
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\obj\Debug\net8.0\GoalZone.DtoLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\obj\Debug\net8.0\GoalZone.DtoLayer.AssemblyInfoInputs.cache
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\obj\Debug\net8.0\GoalZone.DtoLayer.AssemblyInfo.cs
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\obj\Debug\net8.0\GoalZone.DtoLayer.csproj.CoreCompileInputs.cache
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\obj\Debug\net8.0\GoalZone.7F0DB1D7.Up2Date
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\obj\Debug\net8.0\GoalZone.DtoLayer.dll
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\obj\Debug\net8.0\refint\GoalZone.DtoLayer.dll
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\obj\Debug\net8.0\GoalZone.DtoLayer.pdb
+C:\Users\ersin\source\repos\GoalZone\GoalZone.DtoLayer\obj\Debug\net8.0\ref\GoalZone.DtoLayer.dll

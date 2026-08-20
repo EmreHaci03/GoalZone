@@ -1,0 +1,259 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GoalZone.WebUI
+build_property.RootNamespace = GoalZone.WebUI
+build_property.ProjectDir = C:\Users\ersin\source\repos\GoalZone\GoalZone.WebUI\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\ersin\source\repos\GoalZone\GoalZone.WebUI
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5EYXNoYm9hcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminFootballMatch/CreateFootballMatch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Gb290YmFsbE1hdGNoXENyZWF0ZUZvb3RiYWxsTWF0Y2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminFootballMatch/FootballMatchList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Gb290YmFsbE1hdGNoXEZvb3RiYWxsTWF0Y2hMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminMatchEvent/CreateMatchEvent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5NYXRjaEV2ZW50XENyZWF0ZU1hdGNoRXZlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminMatchEvent/MatchEventList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5NYXRjaEV2ZW50XE1hdGNoRXZlbnRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminMatchStatistic/CreateMatchStatistic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5NYXRjaFN0YXRpc3RpY1xDcmVhdGVNYXRjaFN0YXRpc3RpYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminMatchStatistic/MatchStatisticList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5NYXRjaFN0YXRpc3RpY1xNYXRjaFN0YXRpc3RpY0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminNews/CreateNews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5OZXdzXENyZWF0ZU5ld3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminNews/NewsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5OZXdzXE5ld3NMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminNews/UpdateNews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5OZXdzXFVwZGF0ZU5ld3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminPlayer/CreatePlayer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5QbGF5ZXJcQ3JlYXRlUGxheWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminPlayer/PlayerList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5QbGF5ZXJcUGxheWVyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminPlayer/UpdatePlayer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5QbGF5ZXJcVXBkYXRlUGxheWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminStadium/CreateStadium.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5TdGFkaXVtXENyZWF0ZVN0YWRpdW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminStadium/StadiumList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5TdGFkaXVtXFN0YWRpdW1MaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminStadium/UpdateStadium.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5TdGFkaXVtXFVwZGF0ZVN0YWRpdW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminTeam/CreateTeam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5UZWFtXENyZWF0ZVRlYW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminTeam/TeamList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5UZWFtXFRlYW1MaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/AdminTeam/UpdateTeam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5UZWFtXFVwZGF0ZVRlYW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Default/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVmYXVsdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Fixture/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRml4dHVyZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/MatchDetail/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWF0Y2hEZXRhaWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/AdminDashboard/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWRtaW5EYXNoYm9hcmRcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/AdminHead/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWRtaW5IZWFkXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/AdminLayoutStatCards/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWRtaW5MYXlvdXRTdGF0Q2FyZHNcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/AdminMostGoalMatch/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWRtaW5Nb3N0R29hbE1hdGNoXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/AdminRecentMatch/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWRtaW5SZWNlbnRNYXRjaFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/AdminSideBar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWRtaW5TaWRlQmFyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/AdminTopBar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWRtaW5Ub3BCYXJcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/AdminUpComingMatch/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWRtaW5VcENvbWluZ01hdGNoXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/DefaultFeatureMatch/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRGVmYXVsdEZlYXR1cmVNYXRjaFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/DefaultFinishedMatch/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRGVmYXVsdEZpbmlzaGVkTWF0Y2hcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/DefaultLiveMatch/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRGVmYXVsdExpdmVNYXRjaFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/DefaultNotStartedMatch/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRGVmYXVsdE5vdFN0YXJ0ZWRNYXRjaFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/LayoutFooter/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTGF5b3V0Rm9vdGVyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/LayoutHead/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTGF5b3V0SGVhZFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/LayoutNavbar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTGF5b3V0TmF2YmFyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/LayoutScript/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTGF5b3V0U2NyaXB0XERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/MatchStatisticAwayTeamGoals/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWF0Y2hTdGF0aXN0aWNBd2F5VGVhbUdvYWxzXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/MatchStatisticCards/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWF0Y2hTdGF0aXN0aWNDYXJkc1xEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/MatchStatisticEvents/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWF0Y2hTdGF0aXN0aWNFdmVudHNcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/MatchStatisticFeature/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWF0Y2hTdGF0aXN0aWNGZWF0dXJlXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/MatchStatisticHomeTeamGoals/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWF0Y2hTdGF0aXN0aWNIb21lVGVhbUdvYWxzXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/MatchStatisticInfoCard/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWF0Y2hTdGF0aXN0aWNJbmZvQ2FyZFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/MatchStatisticScore/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWF0Y2hTdGF0aXN0aWNTY29yZVxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/MatchStatisticSubstitutions/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWF0Y2hTdGF0aXN0aWNTdWJzdGl0dXRpb25zXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/MatchStatisticTimeline/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWF0Y2hTdGF0aXN0aWNUaW1lbGluZVxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Components/MatchStatistic/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWF0Y2hTdGF0aXN0aWNcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/_UILayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9VSUxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Standing/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhbmRpbmdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ersin/source/repos/GoalZone/GoalZone.WebUI/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-y2yafvgurq

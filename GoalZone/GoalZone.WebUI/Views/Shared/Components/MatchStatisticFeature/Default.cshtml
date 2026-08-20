@@ -1,0 +1,104 @@
+﻿@model List<ResultFootballMatchDto>
+@foreach (var match in Model)
+{
+    var isLive = match.MatchStatus == "Live";
+
+    var displayStatus = match.MatchStatus switch
+    {
+        "NotStarted" => "Gelecek Maç",
+        "Live" => "Canlı",
+        "Finished" => "Tamamlandı",
+        _ => match.MatchStatus
+    };
+
+    <section class="hero">
+        <div class="wrap">
+            <div class="hero-badges">
+                <span class="hbadge hb-gold">
+                    <i class="bi bi-trophy-fill me-1"></i>
+                    Premier League · Hafta @match.Week
+                </span>
+                <span class="hbadge @(isLive ? "hb-live" : "hb-gray")">
+                    <i class="bi bi-check2-circle me-1"></i>
+                    @displayStatus
+                </span>
+                <span class="hbadge hb-green">
+                    <i class="bi bi-geo-alt-fill me-1"></i>
+                    @match.StadiumName
+                </span>
+            </div>
+            <div class="hero-grid">
+                <div class="h-team">
+                    <div class="h-logo">
+                        <img src="@match.HomeTeamLogoUrl"
+                             alt="@match.HomeTeamName"
+                             onerror="this.parentNode.textContent='@match.HomeTeamName'" />
+                    </div>
+                    <div class="h-name">
+                        @match.HomeTeamName
+                    </div>
+                    <div class="h-type">
+                        Ev Sahibi
+                    </div>
+                </div>
+                <div class="h-score-c">
+                    @if (match.FullTimeScoreHome.HasValue &&
+                                    match.FullTimeScoreAway.HasValue)
+                    {
+                        <div class="h-sc">
+                            @match.FullTimeScoreHome–@match.FullTimeScoreAway
+                        </div>
+                        @if (match.HalfTimeScoreHome.HasValue &&
+                                        match.HalfTimeScoreAway.HasValue)
+                        {
+                            <div class="h-ht">
+                                <i class="bi bi-hourglass-split me-1"></i>
+                                İY: @match.HalfTimeScoreHome–@match.HalfTimeScoreAway
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="h-sc">
+                            VS
+                        </div>
+                    }
+                    <div class="h-ft">
+                        @displayStatus
+                    </div>
+                </div>
+                <div class="h-team">
+                    <div class="h-logo">
+                        <img src="@match.AwayTeamLogoUrl"
+                             alt="@match.AwayTeamName"
+                             onerror="this.parentNode.textContent='@match.AwayTeamName'" />
+                    </div>
+                    <div class="h-name">
+                        @match.AwayTeamName
+                    </div>
+                    <div class="h-type">
+                        Deplasman
+                    </div>
+                </div>
+            </div>
+            <div class="info-strip">
+                <div class="istrip">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>@match.StadiumName</span>
+                </div>
+                <div class="istrip">
+                    <i class="bi bi-calendar3"></i>
+                    <span>
+                        @match.MatchDate.ToString("dd MMMM yyyy")
+                    </span>
+                </div>
+                <div class="istrip">
+                    <i class="bi bi-clock"></i>
+                    <span>
+                        @match.MatchDate.ToString("HH:mm")
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+}

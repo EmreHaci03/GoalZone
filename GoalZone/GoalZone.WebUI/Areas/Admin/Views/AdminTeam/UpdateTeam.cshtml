@@ -1,0 +1,437 @@
+﻿@model UpdateTeamDto
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <span class="accent">TAKIM</span> GÜNCELLE
+            </h1>
+
+            <div class="breadcrumb-custom">
+                <a href="/Admin/Dashboard">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Takım Yönetimi</span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Takım Güncelle</span>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="news-create-container">
+
+    <form asp-area="Admin"
+          asp-controller="AdminTeam"
+          asp-action="UpdateTeam"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="TeamId" />
+
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+        <!-- SOL TARAF -->
+        <div class="news-main">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+                        <h3>Takım Bilgileri</h3>
+                        <span>Takımın temel bilgilerini güncelle</span>
+                    </div>
+                </div>
+
+                <div class="two-column">
+
+                    <!-- Takım Adı -->
+                    <div class="form-group">
+                        <label asp-for="TeamName">Takım Adı</label>
+                        <input asp-for="TeamName"
+                               id="inputName"
+                               class="form-control-custom"
+                               placeholder="Örn: Manchester United" />
+                        <span asp-validation-for="TeamName" class="field-error"></span>
+                    </div>
+
+                    <!-- Kısa Ad -->
+                    <div class="form-group">
+                        <label asp-for="TeamShortName">Kısa Ad</label>
+                        <input asp-for="TeamShortName"
+                               class="form-control-custom"
+                               placeholder="Örn: MUN" />
+                        <span asp-validation-for="TeamShortName" class="field-error"></span>
+                    </div>
+
+                </div>
+
+                <div class="two-column">
+
+                    <!-- Teknik Direktör -->
+                    <div class="form-group">
+                        <label asp-for="TeamManagerName">Teknik Direktör</label>
+                        <input asp-for="TeamManagerName"
+                               class="form-control-custom"
+                               placeholder="Örn: Erik ten Hag" />
+                        <span asp-validation-for="TeamManagerName" class="field-error"></span>
+                    </div>
+
+                    <!-- Kuruluş Yılı -->
+                    <div class="form-group">
+                        <label asp-for="TeamFoundationYear">Kuruluş Yılı</label>
+                        <input asp-for="TeamFoundationYear"
+                               type="number"
+                               class="form-control-custom"
+                               placeholder="Örn: 1878" />
+                        <span asp-validation-for="TeamFoundationYear" class="field-error"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGO -->
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon pink">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+
+                    <div>
+                        <h3>Takım Logosu</h3>
+                        <span>Logo görselinin adresini güncelle</span>
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrEmpty(Model.TeamLogoUrl))
+                {
+                    <div class="image-preview" id="logoPreviewBox">
+                        <img src="@Model.TeamLogoUrl" alt="@Model.TeamName" />
+                    </div>
+                }
+                else
+                {
+                    <div class="image-preview image-preview-empty" id="logoPreviewBox">
+                        <i class="fa-regular fa-image"></i>
+                        <span>Logo önizlemesi</span>
+                    </div>
+                }
+
+                <div class="form-group">
+                    <label asp-for="TeamLogoUrl">Logo URL</label>
+                    <input asp-for="TeamLogoUrl"
+                           id="logoUrlInput"
+                           class="form-control-custom"
+                           placeholder="https://..." />
+                    <span asp-validation-for="TeamLogoUrl" class="field-error"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAĞ TARAF -->
+        <div class="news-sidebar">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon blue">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div>
+                        <h3>Stadyum</h3>
+                        <span>Takımın stadyumunu seç</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="StadiumId">Stadyum</label>
+                    <select asp-for="StadiumId"
+                            class="form-control-custom"
+                            asp-items="ViewBag.Stadiums">
+                        <option value="">Stadyum seçiniz</option>
+                    </select>
+                    <span asp-validation-for="StadiumId" class="field-error"></span>
+
+                    <small class="form-help">
+                        Takımın oynadığı stadyumu seç.
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+                <a href="/Admin/AdminTeam/TeamList/" class="btn-cancel">
+                    <i class="fa-solid fa-xmark"></i>
+                    İptal
+                </a>
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Takımı Güncelle
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+@section Styles {
+    <style>
+
+        .news-create-container {
+            width: 100%;
+        }
+
+            .news-create-container form {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 380px;
+                gap: 24px;
+                align-items: start;
+            }
+
+        .news-main,
+        .news-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-card {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px;
+        }
+
+        .form-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 20px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .form-card-header h3 {
+                margin: 0;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            .form-card-header span {
+                display: block;
+                color: var(--text-muted);
+                font-size: 12px;
+                margin-top: 3px;
+            }
+
+        .header-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(0, 255, 135, .1);
+            color: var(--pl-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .header-icon.pink {
+                background: rgba(233, 0, 82, .12);
+                color: var(--pl-pink);
+            }
+
+            .header-icon.blue {
+                background: rgba(4, 245, 255, .1);
+                color: var(--pl-blue);
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group:last-child {
+                margin-bottom: 0;
+            }
+
+            .form-group label {
+                display: block;
+                color: var(--text-secondary);
+                font-size: 13px;
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+
+        .form-control-custom {
+            width: 100%;
+            background: var(--dark-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 11px 13px;
+            color: white;
+            font-size: 13px;
+            outline: none;
+            transition: .2s;
+        }
+
+            .form-control-custom:focus {
+                border-color: var(--pl-accent);
+                box-shadow: 0 0 0 3px rgba(0,255,135,.07);
+            }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-help {
+            display: block;
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-top: 6px;
+        }
+
+        .field-error {
+            display: block;
+            color: #ff4d6d;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .validation-summary {
+            color: #ff4d6d;
+            margin-bottom: 15px;
+        }
+
+        /* LOGO ÖNİZLEME */
+
+        .image-preview {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            background: var(--dark-bg);
+        }
+
+            .image-preview img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+                padding: 12px;
+            }
+
+        .image-preview-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+            .image-preview-empty i {
+                font-size: 26px;
+            }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-cancel,
+        .btn-submit {
+            flex: 1;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+            .btn-cancel:hover {
+                color: white;
+                background: var(--dark-hover);
+            }
+
+        .btn-submit {
+            border: none;
+            color: white;
+            background: linear-gradient(135deg, var(--pl-purple), var(--pl-pink));
+        }
+
+            .btn-submit:hover {
+                color: white;
+                transform: translateY(-1px);
+                box-shadow: 0 6px 20px rgba(233,0,82,.3);
+            }
+
+        @@media(max-width: 1000px) {
+
+            .news-create-container form {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        const logoUrlInput = document.getElementById("logoUrlInput");
+
+        if (logoUrlInput) {
+            logoUrlInput.addEventListener("input", function () {
+                const url = this.value.trim();
+                const box = document.getElementById("logoPreviewBox");
+                if (url === "") return;
+
+                box.className = "image-preview";
+                box.innerHTML = `<img src="${url}" alt="Logo önizleme" />`;
+            });
+        }
+
+    </script>
+}

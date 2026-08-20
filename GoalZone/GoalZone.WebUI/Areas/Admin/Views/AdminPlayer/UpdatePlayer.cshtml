@@ -1,0 +1,494 @@
+﻿@model UpdatePlayerDto
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <span class="accent">OYUNCU</span> GÜNCELLE
+            </h1>
+
+            <div class="breadcrumb-custom">
+                <a href="/Admin/Dashboard">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Oyuncu Yönetimi</span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Oyuncu Güncelle</span>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="news-create-container">
+
+    <form asp-area="Admin"
+          asp-controller="AdminPlayer"
+          asp-action="UpdatePlayer"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="PlayerId" />
+
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+        <!-- SOL TARAF -->
+        <div class="news-main">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div>
+                        <h3>Oyuncu Bilgileri</h3>
+                        <span>Oyuncunun temel bilgilerini güncelle</span>
+                    </div>
+                </div>
+
+                <!-- Ad -->
+                <div class="form-group">
+                    <label asp-for="PlayerName">Oyuncu Adı</label>
+                    <input asp-for="PlayerName"
+                           id="inputName"
+                           class="form-control-custom"
+                           placeholder="Örn: Bruno Fernandes" />
+                    <span asp-validation-for="PlayerName" class="field-error"></span>
+                </div>
+
+                <div class="two-column">
+
+                    <!-- Pozisyon -->
+                    <div class="form-group">
+                        <label asp-for="Position">Pozisyon</label>
+                        <select asp-for="Position"
+                                id="inputPosition"
+                                class="form-control-custom">
+                            <option value="">Pozisyon seçiniz</option>
+                            <option value="Kaleci">Kaleci</option>
+                            <option value="Defans">Defans</option>
+                            <option value="Orta Saha">Orta Saha</option>
+                            <option value="Forvet">Forvet</option>
+                        </select>
+                        <span asp-validation-for="Position" class="field-error"></span>
+                    </div>
+
+                    <!-- Forma No -->
+                    <div class="form-group">
+                        <label asp-for="JerseyNumber">Forma Numarası</label>
+                        <input asp-for="JerseyNumber"
+                               id="inputJersey"
+                               type="number"
+                               min="1"
+                               max="99"
+                               class="form-control-custom"
+                               placeholder="Örn: 8" />
+                        <span asp-validation-for="JerseyNumber" class="field-error"></span>
+                    </div>
+
+                </div>
+
+                <div class="two-column">
+
+                    <!-- Uyruk -->
+                    <div class="form-group">
+                        <label asp-for="Nationality">Uyruk</label>
+                        <input asp-for="Nationality"
+                               id="inputNationality"
+                               class="form-control-custom"
+                               placeholder="Örn: Portekiz" />
+                        <span asp-validation-for="Nationality" class="field-error"></span>
+                    </div>
+
+                    <!-- Doğum Tarihi -->
+                    <div class="form-group">
+                        <label asp-for="BirthDate">Doğum Tarihi</label>
+                        <input asp-for="BirthDate"
+                               type="date"
+                               class="form-control-custom" />
+                        <span asp-validation-for="BirthDate" class="field-error"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAĞ TARAF -->
+        <div class="news-sidebar">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon green">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3>Takım</h3>
+                        <span>Oyuncunun takımını seç</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="TeamId">Takım</label>
+                    <select asp-for="TeamId"
+                            class="form-control-custom"
+                            asp-items="ViewBag.Teams">
+                        <option value="">Takım seçiniz</option>
+                    </select>
+                    <span asp-validation-for="TeamId" class="field-error"></span>
+
+                    <small class="form-help">
+                        Oyuncunun oynadığı takımı seç.
+                    </small>
+                </div>
+
+            </div>
+
+
+            <!-- ÖNİZLEME -->
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon blue">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <div>
+                        <h3>Önizleme</h3>
+                        <span>Güncel bilgiler</span>
+                    </div>
+                </div>
+
+                <div class="preview-card">
+                    <div class="preview-avatar" id="previewJersey">#@Model.JerseyNumber</div>
+                    <div class="preview-name" id="previewName">@Model.PlayerName</div>
+                    <div class="preview-rows">
+                        <div class="preview-row">
+                            <span class="preview-label">
+                                <i class="fa-solid fa-location-crosshairs"></i> Pozisyon
+                            </span>
+                            <span class="preview-value" id="previewPosition">@Model.Position</span>
+                        </div>
+                        <div class="preview-row">
+                            <span class="preview-label">
+                                <i class="fa-solid fa-flag"></i> Uyruk
+                            </span>
+                            <span class="preview-value" id="previewNationality">@Model.Nationality</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+                <a href="/Admin/AdminPlayer/PlayerList/" class="btn-cancel">
+                    <i class="fa-solid fa-xmark"></i>
+                    İptal
+                </a>
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Güncelle
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+@section Styles {
+    <style>
+
+        .news-create-container {
+            width: 100%;
+        }
+
+            .news-create-container form {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 380px;
+                gap: 24px;
+                align-items: start;
+            }
+
+        .news-main,
+        .news-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-card {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px;
+        }
+
+        .form-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 20px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .form-card-header h3 {
+                margin: 0;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            .form-card-header span {
+                display: block;
+                color: var(--text-muted);
+                font-size: 12px;
+                margin-top: 3px;
+            }
+
+        .header-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(0, 255, 135, .1);
+            color: var(--pl-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .header-icon.green {
+                background: rgba(0, 255, 135, .1);
+                color: var(--pl-accent);
+            }
+
+            .header-icon.blue {
+                background: rgba(4, 245, 255, .1);
+                color: var(--pl-blue);
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group:last-child {
+                margin-bottom: 0;
+            }
+
+            .form-group label {
+                display: block;
+                color: var(--text-secondary);
+                font-size: 13px;
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+
+        .form-control-custom {
+            width: 100%;
+            background: var(--dark-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 11px 13px;
+            color: white;
+            font-size: 13px;
+            outline: none;
+            transition: .2s;
+        }
+
+            .form-control-custom:focus {
+                border-color: var(--pl-accent);
+                box-shadow: 0 0 0 3px rgba(0,255,135,.07);
+            }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-help {
+            display: block;
+            color: var(--text-muted);
+            font-size: 11px;
+            margin-top: 6px;
+        }
+
+        .field-error {
+            display: block;
+            color: #ff4d6d;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .validation-summary {
+            color: #ff4d6d;
+            margin-bottom: 15px;
+        }
+
+        /* ÖNİZLEME */
+
+        .preview-card {
+            text-align: center;
+        }
+
+        .preview-avatar {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            border-radius: 16px;
+            background: rgba(0, 255, 135, .1);
+            color: var(--pl-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .preview-name {
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            word-break: break-word;
+        }
+
+        .preview-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .preview-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 11px 14px;
+            background: var(--dark-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .preview-label {
+            color: var(--text-muted);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .preview-value {
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-cancel,
+        .btn-submit {
+            flex: 1;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+            .btn-cancel:hover {
+                color: white;
+                background: var(--dark-hover);
+            }
+
+        .btn-submit {
+            border: none;
+            color: white;
+            background: linear-gradient(135deg, var(--pl-purple), var(--pl-pink));
+        }
+
+            .btn-submit:hover {
+                color: white;
+                transform: translateY(-1px);
+                box-shadow: 0 6px 20px rgba(233,0,82,.3);
+            }
+
+        @@media(max-width: 1000px) {
+
+            .news-create-container form {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        const nameInput = document.getElementById("inputName");
+        const posInput = document.getElementById("inputPosition");
+        const jerseyInput = document.getElementById("inputJersey");
+        const natInput = document.getElementById("inputNationality");
+
+        const previewName = document.getElementById("previewName");
+        const previewPosition = document.getElementById("previewPosition");
+        const previewJersey = document.getElementById("previewJersey");
+        const previewNationality = document.getElementById("previewNationality");
+
+        if (nameInput) {
+            nameInput.addEventListener("input", function () {
+                previewName.textContent = this.value.trim() || "Oyuncu Adı";
+            });
+        }
+
+        if (posInput) {
+            posInput.addEventListener("change", function () {
+                previewPosition.textContent = this.value || "—";
+            });
+        }
+
+        if (jerseyInput) {
+            jerseyInput.addEventListener("input", function () {
+                previewJersey.textContent = this.value.trim() ? "#" + this.value.trim() : "#";
+            });
+        }
+
+        if (natInput) {
+            natInput.addEventListener("input", function () {
+                previewNationality.textContent = this.value.trim() || "—";
+            });
+        }
+
+    </script>
+}

@@ -1,0 +1,73 @@
+﻿@using GoalZone.EntityLayer.Enums
+@model List<MatchStatusCountDto>
+
+@{
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+
+    var liveCount = Model
+    .FirstOrDefault(x => x.MatchStatus == MatchStatus.Live)?.Count ?? 0;
+    var finishedCount = Model
+      .FirstOrDefault(x => x.MatchStatus == MatchStatus.Finished)?.Count ?? 0;
+
+    var notStartedCount = Model
+        .FirstOrDefault(x => x.MatchStatus == MatchStatus.NotStarted)?.Count ?? 0;
+
+    var totalMatchCount = liveCount + finishedCount + notStartedCount;
+
+}
+<!-- LEAGUE HEADER -->
+<section class="lg-head">
+    <div class="wrap">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="lg-badge"><i class="bi bi-trophy-fill"></i> Premier League</div>
+                <h1 class="lg-title">Hafta <span style="color:var(--green)">@ViewBag.LastWeek </span> Sonuçları</h1>
+                <p class="lg-sub">@ViewBag.FirstMatchDate – @ViewBag.LastMatchDate &nbsp;·&nbsp; (@totalMatchCount) Maç</p>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <div class="lg-stats">
+                    <div style="text-align:center"><div class="ls-num">@liveCount</div><div class="ls-lbl">Canlı</div></div>
+                    <div style="text-align:center"><div class="ls-num">@finishedCount</div><div class="ls-lbl">Biten</div></div>
+                    <div style="text-align:center"><div class="ls-num">@notStartedCount</div><div class="ls-lbl">Yaklaşan</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FILTER TABS -->
+<div class="ftabs-wrap">
+    <div class="wrap">
+        <div class="ftabs">
+            <button class="ftab active" data-f="all">Tüm Maçlar</button>
+            <button class="ftab" data-f="live"><span class="live-dot"></span>Canlı<span class="bcnt">@liveCount</span></button>
+            <button class="ftab" data-f="finished">Tamamlananlar</button>
+            <button class="ftab" data-f="upcoming">Yaklaşanlar</button>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<main>
+    <div class="wrap" style="padding-top:28px;padding-bottom:56px">
+
+        <!-- FEATURED -->
+        @await Component.InvokeAsync("DefaultFeatureMatch")
+
+        <!-- ════ LIVE ════ -->
+        <div class="sec-ttl mcw-section" data-s="live">🔴 &nbsp;Canlı Maçlar</div>
+
+        @await Component.InvokeAsync("DefaultLiveMatch")
+
+        <!-- ════ FINISHED ════ -->
+        <div class="sec-ttl mcw-section" data-s="finished" style="margin-top:22px">✅ &nbsp;Tamamlanan Maçlar</div>
+
+        @await Component.InvokeAsync("DefaultFinishedMatch")
+
+        <!-- ════ UPCOMING ════ -->
+        <div class="sec-ttl mcw-section" data-s="upcoming" style="margin-top:22px">🕐 &nbsp;Yaklaşan Maçlar</div>
+
+        @await Component.InvokeAsync("DefaultNotStartedMatch")
+
+    </div>
+</main>

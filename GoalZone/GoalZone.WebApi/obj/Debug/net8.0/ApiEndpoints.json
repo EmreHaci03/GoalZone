@@ -1,0 +1,668 @@
+[
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.DashboardStatisticController",
+    "Method": "AdminDashboard",
+    "RelativePath": "api/DashboardStatistic/AdminDashboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.DashboardStatisticController",
+    "Method": "MatchWithStatus",
+    "RelativePath": "api/DashboardStatistic/MatchWithStatus",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.DashboardStatisticController",
+    "Method": "MostGoalMatch",
+    "RelativePath": "api/DashboardStatistic/MostGoalMatch",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.DashboardStatisticController",
+    "Method": "UpComingMatches",
+    "RelativePath": "api/DashboardStatistic/UpComingMatches",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "FootballMatch",
+    "RelativePath": "api/FootballMatch",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "CreateFootballMatch",
+    "RelativePath": "api/FootballMatch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.FootballMatchDto.CreateFootballMatchDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "UpdateFootballMatch",
+    "RelativePath": "api/FootballMatch",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.FootballMatchDto.UpdateFootballMatchDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "FootballMatch",
+    "RelativePath": "api/FootballMatch/{weekId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "weekId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "FinishedMatchListByLastWeek",
+    "RelativePath": "api/FootballMatch/FinishedMatchList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "GetFootballMatchWithDetailByFootballId",
+    "RelativePath": "api/FootballMatch/GetFootballMatchWithDetailByFootball",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "GetLastFootballMatchCount",
+    "RelativePath": "api/FootballMatch/GetLastFootballMatchCount",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "GetLastFootballMatchWeek",
+    "RelativePath": "api/FootballMatch/GetLastFootballMatchWeek",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "GetLastWeekFeatureMatch",
+    "RelativePath": "api/FootballMatch/LastWeekFeatureMatch",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "LiveMatchListByLastWeek",
+    "RelativePath": "api/FootballMatch/LiveMatchList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.FootballMatchController",
+    "Method": "NotStartMatchListByLastWeek",
+    "RelativePath": "api/FootballMatch/NotStartMatchList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "MatchEventList",
+    "RelativePath": "api/MatchEvent",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "CreateMatchEvent",
+    "RelativePath": "api/MatchEvent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.MatchEventDto.CreateMatchEventDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "UpdateMatchEvent",
+    "RelativePath": "api/MatchEvent",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.MatchEventDto.UpdateMatchEventDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "TeamAwayTeamCardListsCardList",
+    "RelativePath": "api/MatchEvent/AwayTeamCardList/{footballMatchId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "AwayTeamEventListByFootballMatch",
+    "RelativePath": "api/MatchEvent/AwayTeamEventListByFootballMatchId/{footballMatchId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "AwayTeamMatchEventPlayerGoalList",
+    "RelativePath": "api/MatchEvent/AwayTeamMatchEventPlayerGoalList/{footballMatchId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "AwayTeamSubstitutionList",
+    "RelativePath": "api/MatchEvent/AwayTeamSubstitution/{footballMatchId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "HomeTeamCardList",
+    "RelativePath": "api/MatchEvent/HomeTeamCardList/{footballMatchId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "HomeTeamEventListByFootballMatch",
+    "RelativePath": "api/MatchEvent/HomeTeamEventListByFootballMatchId/{footballMatchId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "HomeTeamMatchEventPlayerGoalList",
+    "RelativePath": "api/MatchEvent/HomeTeamMatchEventPlayerGoalList/{footballMatchId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "HomeTeamSubstitutionList",
+    "RelativePath": "api/MatchEvent/HomeTeamSubstitution/{footballMatchId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchEventController",
+    "Method": "MatchEventListByFootballMatchId",
+    "RelativePath": "api/MatchEvent/MatchEventListByFootballMatchId/{footballMatchId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchStatisticController",
+    "Method": "MatchStatisticList",
+    "RelativePath": "api/MatchStatistic",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchStatisticController",
+    "Method": "CreateMatchStatistic",
+    "RelativePath": "api/MatchStatistic",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.MatchStatisticDto.CreateMatchStatisticDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.MatchStatisticController",
+    "Method": "MatchStatisticByFootballMatch",
+    "RelativePath": "api/MatchStatistic/MatchStatisticByFootballMatchId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "footballMatchId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.NewsController",
+    "Method": "CreateNews",
+    "RelativePath": "api/News",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.NewsDto.CreateNewsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.NewsController",
+    "Method": "UpdateNews",
+    "RelativePath": "api/News",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.NewsDto.UpdateNewsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.NewsController",
+    "Method": "GetNewsById",
+    "RelativePath": "api/News/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.NewsController",
+    "Method": "DeleteNews",
+    "RelativePath": "api/News/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.NewsController",
+    "Method": "NewsListWithTeam",
+    "RelativePath": "api/News/NewsListWithTeam",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.PlayerController",
+    "Method": "CreatePlayer",
+    "RelativePath": "api/Player",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.PlayerDto.CreatePlayerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.PlayerController",
+    "Method": "UpdatePlayer",
+    "RelativePath": "api/Player",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.PlayerDto.UpdatePlayerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.PlayerController",
+    "Method": "GetPlayerById",
+    "RelativePath": "api/Player/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.PlayerController",
+    "Method": "DeletePlayer",
+    "RelativePath": "api/Player/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.PlayerController",
+    "Method": "PlayerListWithTeam",
+    "RelativePath": "api/Player/PlayerListWithTeam",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.StadiumController",
+    "Method": "StadiumList",
+    "RelativePath": "api/Stadium",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.StadiumController",
+    "Method": "CreateStadium",
+    "RelativePath": "api/Stadium",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.StadiumDto.CreateStadiumDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.StadiumController",
+    "Method": "UpdateStadium",
+    "RelativePath": "api/Stadium",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.StadiumDto.UpdateStadiumDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.StadiumController",
+    "Method": "GetStadiumById",
+    "RelativePath": "api/Stadium/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.TeamsController",
+    "Method": "TeamListWithStadium",
+    "RelativePath": "api/Teams",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.TeamsController",
+    "Method": "CreateTeam",
+    "RelativePath": "api/Teams",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.TeamDto.CreateTeamDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.TeamsController",
+    "Method": "UpdateTeam",
+    "RelativePath": "api/Teams",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GoalZone.DtoLayer.DTOS.TeamDto.UpdateTeamDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoalZone.WebApi.Controllers.TeamsController",
+    "Method": "GetTeamById",
+    "RelativePath": "api/Teams/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

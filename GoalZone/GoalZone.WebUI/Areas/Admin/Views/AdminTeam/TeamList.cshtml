@@ -1,0 +1,421 @@
+﻿@model List<ResultTeamDto>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <span class="accent">TAKIMLAR</span>
+            </h1>
+
+            <div class="breadcrumb-custom">
+                <a href="/Admin/Dashboard/Index">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Takımlar</span>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="news-container">
+
+    <div class="news-header">
+        <div>
+            <h3>Takım Listesi</h3>
+            <span>@Model.Count takım bulundu</span>
+        </div>
+
+        <div class="news-header-actions">
+
+            <div class="news-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="teamSearch" placeholder="Takım ara...">
+            </div>
+
+            <a href="/Admin/AdminTeam/CreateTeam/" class="btn-add-news">
+                <i class="fa-solid fa-plus"></i>
+                Yeni Takım
+            </a>
+
+        </div>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+
+            <table class="news-table">
+
+                <thead>
+                    <tr>
+                        <th>Takım</th>
+                        <th>Kısa Ad</th>
+                        <th>Teknik Direktör</th>
+                        <th>Kuruluş</th>
+                        <th>Stadyum</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+
+                <tbody id="teamTableBody">
+
+                    @foreach (var team in Model)
+                    {
+                        <tr class="news-row">
+
+                            <td>
+                                <div class="team-cell">
+
+                                    <img src="@team.TeamLogoUrl"
+                                         alt="@team.TeamName"
+                                         class="team-cell-logo" />
+
+                                    <span class="team-cell-name">
+                                        @team.TeamName
+                                    </span>
+
+                                </div>
+                            </td>
+
+                            <td>
+                                <span class="category-badge">
+                                    @team.TeamShortName
+                                </span>
+                            </td>
+
+                            <td>
+                                @team.TeamManagerName
+                            </td>
+
+                            <td>
+                                <span class="date-text">
+                                    @team.TeamFoundationYear
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="stadium-info">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>@team.StadiumName</span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="action-buttons">
+
+                                    <a href="/Admin/AdminTeam/UpdateTeam/@team.TeamId"
+                                       class="action-btn edit"
+                                       title="Düzenle">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+    else
+    {
+        <div class="empty-news">
+
+            <div class="empty-icon">
+                <i class="fa-regular fa-futbol"></i>
+            </div>
+
+            <h3>Henüz takım yok</h3>
+
+            <p>
+                Sistemde kayıtlı takım bulunmuyor.
+            </p>
+
+            <a href="/Admin/AdminTeam/CreateTeam" class="btn-quick-add">
+                <i class="fa-solid fa-plus"></i>
+                İlk Takımı Ekle
+            </a>
+
+        </div>
+    }
+
+</div>
+
+@section Styles {
+
+    <style>
+
+        .news-container {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .news-header {
+            padding: 22px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .news-header h3 {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 25px;
+                letter-spacing: 1px;
+                margin: 0;
+            }
+
+            .news-header span {
+                color: var(--text-muted);
+                font-size: 12px;
+            }
+
+        .news-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .news-search {
+            position: relative;
+            width: 280px;
+        }
+
+            .news-search i {
+                position: absolute;
+                left: 13px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--text-muted);
+                font-size: 13px;
+            }
+
+            .news-search input {
+                width: 100%;
+                padding: 10px 12px 10px 38px;
+                background: var(--dark-bg);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                color: white;
+                outline: none;
+            }
+
+                .news-search input:focus {
+                    border-color: var(--pl-accent);
+                }
+
+        .btn-add-news {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--pl-purple), var(--pl-pink));
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: .2s;
+        }
+
+            .btn-add-news:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 6px 20px rgba(233,0,82,.3);
+                color: white;
+            }
+
+        .news-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .news-table th {
+                padding: 14px 20px;
+                text-align: left;
+                color: var(--text-muted);
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: 700;
+                background: rgba(255,255,255,0.02);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .news-table td {
+                padding: 16px 20px;
+                border-bottom: 1px solid var(--border);
+                vertical-align: middle;
+                color: var(--text-secondary);
+                font-size: 13px;
+            }
+
+        .news-row {
+            transition: background .2s ease;
+        }
+
+            .news-row:hover {
+                background: var(--dark-hover);
+            }
+
+        .team-cell {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 220px;
+        }
+
+        .team-cell-logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            background: var(--dark-bg);
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .team-cell-name {
+            color: white;
+            font-weight: 600;
+        }
+
+        .category-badge {
+            background: rgba(0,255,135,.1);
+            color: var(--pl-accent);
+            padding: 5px 9px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .date-text {
+            white-space: nowrap;
+        }
+
+        .stadium-info {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            white-space: nowrap;
+        }
+
+            .stadium-info i {
+                color: var(--pl-blue);
+            }
+
+        .action-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .action-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: .2s;
+        }
+
+            .action-btn.edit {
+                background: rgba(0,255,135,.1);
+                color: var(--pl-accent);
+            }
+
+            .action-btn.delete {
+                background: rgba(233,0,82,.1);
+                color: var(--pl-pink);
+            }
+
+            .action-btn:hover {
+                transform: translateY(-2px);
+            }
+
+        .empty-news {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .empty-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: rgba(0,255,135,.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pl-accent);
+            font-size: 28px;
+        }
+
+        .empty-news h3 {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .empty-news p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        @@media (max-width: 1000px) {
+
+            .news-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .news-header-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .news-search {
+                width: 100%;
+            }
+        }
+
+    </style>
+}
+
+@section Scripts {
+
+    <script>
+
+        const searchInput = document.getElementById("teamSearch");
+
+        if (searchInput) {
+
+            searchInput.addEventListener("input", function () {
+
+                const search = this.value.toLowerCase();
+
+                document.querySelectorAll(".news-row").forEach(row => {
+
+                    const text = row.innerText.toLowerCase();
+
+                    row.style.display =
+                        text.includes(search) ? "" : "none";
+
+                });
+
+            });
+
+        }
+
+    </script>
+}

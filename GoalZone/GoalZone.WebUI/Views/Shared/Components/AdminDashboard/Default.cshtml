@@ -1,0 +1,85 @@
+﻿@model DashboardDto
+
+<div class="dashboard-stats">
+
+    <!-- MAÇ -->
+    <div class="dashboard-stat-card">
+        <div class="stat-card-top">
+            <div class="stat-card-icon green">
+                <i class="fa-solid fa-futbol"></i>
+            </div>
+            <span class="stat-card-label">
+                TOPLAM MAÇ
+            </span>
+        </div>
+        <div class="stat-card-value">
+            @Model.TotalMatch
+        </div>
+        <div class="stat-card-bottom">
+            <span>
+                sistemde kayıtlı
+            </span>
+        </div>
+    </div>
+
+    <!-- GALİBİYET -->
+    <div class="dashboard-stat-card">
+        <div class="stat-card-top">
+            <div class="stat-card-icon blue">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <span class="stat-card-label">
+                GALİBİYET
+            </span>
+        </div>
+        <div class="stat-card-value">
+            @Model.Win
+        </div>
+        <div class="stat-card-bottom">
+            <span>
+                galibiyetle biten
+            </span>
+        </div>
+    </div>
+
+    <!-- GOL -->
+    <div class="dashboard-stat-card">
+        <div class="stat-card-top">
+            <div class="stat-card-icon pink">
+                <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <span class="stat-card-label">
+                ATILAN GOL
+            </span>
+        </div>
+        <div class="stat-card-value">
+            @Model.TotalGoal
+        </div>
+        <div class="stat-card-bottom">
+            <span>
+                toplam gol
+            </span>
+        </div>
+    </div>
+
+    <!-- CANLI MAÇ -->
+    <div class="dashboard-stat-card">
+        <div class="stat-card-top">
+            <div class="stat-card-icon purple">
+                <i class="fa-solid fa-chart-simple"></i>
+            </div>
+            <span class="stat-card-label">
+                CANLI MAÇ
+            </span>
+        </div>
+        <div class="stat-card-value">
+            @Model.Statistic
+        </div>
+        <div class="stat-card-bottom">
+            <span>
+                şu an oynanıyor
+            </span>
+        </div>
+    </div>
+
+</div>

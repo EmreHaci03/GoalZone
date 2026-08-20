@@ -1,0 +1,521 @@
+﻿@model List<ResultMatchStatisticDto>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <span class="accent">MAÇ İSTATİSTİKLERİ</span>
+            </h1>
+
+            <div class="breadcrumb-custom">
+                <a href="/Admin/Dashboard/Index">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Maç İstatistikleri</span>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="stat-page">
+
+    <!-- TOOLBAR -->
+    <div class="stat-toolbar">
+
+        <div>
+            <h3>Maç İstatistikleri</h3>
+            <span>@Model.Count istatistik kaydı bulundu</span>
+        </div>
+
+        <div class="toolbar-actions">
+
+            <div class="stat-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text"
+                       id="statSearch"
+                       placeholder="Maç veya istatistik ara...">
+            </div>
+
+            <a href="/Admin/AdminMatchStatistic/CreateMatchStatistic"
+               class="btn-add-stat">
+                <i class="fa-solid fa-plus"></i>
+                Yeni İstatistik
+            </a>
+
+        </div>
+
+    </div>
+
+
+    @if (Model != null && Model.Any())
+    {
+        <!-- STATISTICS TABLE -->
+
+        <div class="stat-table-wrapper">
+
+            <table class="stat-table">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>MAÇ</th>
+                        <th>İSTATİSTİK</th>
+                        <th>EV SAHİBİ</th>
+                        <th>MİSAFİR</th>
+                        <th>İŞLEMLER</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="stat-row">
+
+                            <td>
+                                <span class="stat-id">
+                                    #@item.MatchStatisticId
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="match-name">
+                                    <i class="fa-solid fa-futbol"></i>
+                                    <span>@item.FootballMatch</span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="stat-name">
+                                    @item.StatName
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="value-box home">
+                                    @item.HomeValue
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="value-box away">
+                                    @item.AwayValue
+                                </div>
+                            </td>
+
+                            <td>
+
+                                <div class="stat-actions">
+
+                                    <a href="/Admin/AdminMatchStatistic/UpdateMatchStatistic/@item.MatchStatisticId"
+                                       class="mini-btn edit"
+                                       title="Düzenle">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+
+                                    <a href="/Admin/AdminMatchStatistic/DeleteMatchStatistic/@item.MatchStatisticId"
+                                       class="mini-btn delete"
+                                       title="Sil">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+    else
+    {
+        <!-- EMPTY -->
+
+        <div class="empty-stat">
+
+            <div class="empty-icon">
+                <i class="fa-solid fa-chart-simple"></i>
+            </div>
+
+            <h3>Henüz istatistik yok</h3>
+
+            <p>
+                Sistemde kayıtlı maç istatistiği bulunmuyor.
+            </p>
+
+            <a href="/Admin/AdminMatchStatistic/CreateMatchStatistic/"
+               class="btn-add-stat">
+
+                <i class="fa-solid fa-plus"></i>
+                İlk İstatistiği Ekle
+
+            </a>
+
+        </div>
+    }
+
+</div>
+
+
+@section Styles {
+
+    <style>
+
+        .stat-page {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+
+        /* =========================
+                   TOOLBAR
+                ========================= */
+
+        .stat-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+        }
+
+            .stat-toolbar h3 {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 25px;
+                letter-spacing: 1px;
+                margin: 0;
+            }
+
+            .stat-toolbar span {
+                color: var(--text-muted);
+                font-size: 12px;
+            }
+
+
+        .toolbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+
+        /* SEARCH */
+
+        .stat-search {
+            position: relative;
+            width: 260px;
+        }
+
+            .stat-search i {
+                position: absolute;
+                left: 13px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--text-muted);
+                font-size: 13px;
+            }
+
+            .stat-search input {
+                width: 100%;
+                padding: 10px 12px 10px 38px;
+                background: var(--dark-bg);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                color: white;
+                outline: none;
+            }
+
+                .stat-search input:focus {
+                    border-color: var(--pl-accent);
+                }
+
+
+        /* ADD BUTTON */
+
+        .btn-add-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: linear-gradient( 135deg, var(--pl-purple), var(--pl-pink) );
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: .2s;
+        }
+
+            .btn-add-stat:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 6px 20px rgba(233,0,82,.3);
+                color: white;
+            }
+
+
+        /* =========================
+                   TABLE
+                ========================= */
+
+        .stat-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+
+        .stat-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+
+            .stat-table thead {
+                background: rgba(255,255,255,.025);
+            }
+
+
+            .stat-table th {
+                padding: 15px 18px;
+                color: var(--text-muted);
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                text-align: left;
+                border-bottom: 1px solid var(--border);
+            }
+
+
+            .stat-table td {
+                padding: 16px 18px;
+                border-bottom: 1px solid var(--border);
+                color: white;
+                font-size: 13px;
+            }
+
+
+        .stat-row {
+            transition: .2s;
+        }
+
+            .stat-row:hover {
+                background: rgba(0,255,135,.025);
+            }
+
+            .stat-row:last-child td {
+                border-bottom: none;
+            }
+
+
+        /* ID */
+
+        .stat-id {
+            color: var(--text-muted);
+            font-size: 11px;
+            font-family: monospace;
+        }
+
+
+        /* MATCH */
+
+        .match-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+            .match-name i {
+                color: var(--pl-accent);
+                font-size: 14px;
+            }
+
+
+        /* STAT NAME */
+
+        .stat-name {
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+
+        /* VALUES */
+
+        .value-box {
+            display: inline-flex;
+            min-width: 70px;
+            justify-content: center;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+            .value-box.home {
+                background: rgba(0,255,135,.08);
+                color: var(--pl-accent);
+            }
+
+
+            .value-box.away {
+                background: rgba(4,245,255,.08);
+                color: var(--pl-blue);
+            }
+
+
+        /* ACTIONS */
+
+        .stat-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+
+        .mini-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 12px;
+            transition: .2s;
+        }
+
+
+            .mini-btn.edit {
+                background: rgba(0,255,135,.1);
+                color: var(--pl-accent);
+            }
+
+
+            .mini-btn.delete {
+                background: rgba(233,0,82,.1);
+                color: var(--pl-pink);
+            }
+
+
+            .mini-btn:hover {
+                transform: translateY(-2px);
+            }
+
+
+        /* =========================
+                   EMPTY
+                ========================= */
+
+        .empty-stat {
+            padding: 80px 20px;
+            text-align: center;
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+
+        .empty-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: rgba(0,255,135,.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pl-accent);
+            font-size: 28px;
+        }
+
+
+        .empty-stat h3 {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+
+        .empty-stat p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+                   MOBILE
+                ========================= */
+
+        @@media (max-width: 800px) {
+
+            .stat-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .toolbar-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stat-search {
+                width: 100%;
+            }
+        }
+
+    </style>
+}
+
+
+@section Scripts {
+
+    <script>
+
+        const searchInput = document.getElementById("statSearch");
+
+        if (searchInput) {
+
+            searchInput.addEventListener("input", function () {
+
+                const search = this.value.toLowerCase().trim();
+
+                document
+                    .querySelectorAll(".stat-row")
+                    .forEach(row => {
+
+                        const text =
+                            row.innerText.toLowerCase();
+
+                        row.style.display =
+                            text.includes(search) ? "" : "none";
+
+                    });
+
+            });
+
+        }
+
+    </script>
+
+}

@@ -1,0 +1,119 @@
+﻿@using GoalZone.EntityLayer.Enums
+@using GoalZone.DtoLayer.DTOS.MatchEventDto
+@model List<ResultMatchEventDto>
+
+@{
+    var events = Model ?? new List<ResultMatchEventDto>();
+    var homeIds = ViewBag.HomeEventIds as HashSet<int> ?? new HashSet<int>();
+}
+
+<div class="tl-wrap">
+    <div class="tl-line"></div>
+
+    @foreach (var item in events)
+    {
+        var isHome = homeIds.Contains(item.MatchEventId);
+        var chipSide = isHome ? "home" : "away";
+
+        var eventClass = item.EventType switch
+        {
+            EventType.Goal => "goal-ev",
+            EventType.Penalty => "goal-ev",
+            EventType.OwnGoal => "goal-ev",
+            EventType.YellowCard => "yel-ev",
+            EventType.RedCard => "red-ev",
+            EventType.Substitution => "sub-ev",
+            EventType.Assist => "goal-ev",
+            _ => ""
+        };
+
+        var iconClass = item.EventType switch
+        {
+            EventType.Goal => "ei-goal",
+            EventType.Penalty => "ei-goal",
+            EventType.OwnGoal => "ei-goal",
+            EventType.YellowCard => "ei-yel",
+            EventType.RedCard => "ei-red",
+            EventType.Substitution => "ei-sub",
+            EventType.Assist => "ei-goal",
+            _ => ""
+        };
+
+        var icon = item.EventType switch
+        {
+            EventType.Goal => "bi-circle-fill",
+            EventType.Penalty => "bi-circle-fill",
+            EventType.OwnGoal => "bi-circle-fill",
+            EventType.YellowCard => "bi-square-fill",
+            EventType.RedCard => "bi-square-fill",
+            EventType.Substitution => "bi-arrow-left-right",
+            EventType.Assist => "bi-circle-fill",
+            _ => "bi-circle"
+        };
+
+        var eventText = item.EventType switch
+        {
+            EventType.Goal => "Gol",
+            EventType.Penalty => "Penaltı",
+            EventType.OwnGoal => "Kendi Kalesine",
+            EventType.Assist => "Asist",
+            EventType.YellowCard => "Sarı Kart",
+            EventType.RedCard => "Kırmızı Kart",
+            EventType.Substitution => "Oyuncu Değişikliği",
+            _ => ""
+        };
+
+        <div class="tl-ev">
+
+            @if (isHome)
+            {
+                <div class="tl-home">
+                    <div class="chip @chipSide @eventClass">
+                        <div class="ev-ico @iconClass">
+                            <i class="bi @icon" style="font-size:10px"></i>
+                        </div>
+                        <div>
+                            <div class="ev-pl">@item.PlayerName</div>
+                            <div class="ev-dt">@eventText</div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="tl-home"></div>
+            }
+
+            <div class="tl-min-c">
+                <div class="min-b">@item.Minute'</div>
+            </div>
+
+            @if (!isHome)
+            {
+                <div class="tl-away">
+                    <div class="chip @chipSide @eventClass">
+                        <div class="ev-ico @iconClass">
+                            <i class="bi @icon" style="font-size:10px"></i>
+                        </div>
+                        <div>
+                            <div class="ev-pl">@item.PlayerName</div>
+                            <div class="ev-dt">@eventText</div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="tl-away"></div>
+            }
+
+        </div>
+    }
+
+    @if (!events.Any())
+    {
+        <div class="text-center py-4" style="color:var(--t2)">
+            Henüz maç olayı bulunmuyor.
+        </div>
+    }
+</div>

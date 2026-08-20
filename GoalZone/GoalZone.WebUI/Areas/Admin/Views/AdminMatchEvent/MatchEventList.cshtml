@@ -1,0 +1,396 @@
+﻿@using GoalZone.EntityLayer.Enums
+@model List<ResultMatchEventDto>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <span class="accent">MAÇ</span> OLAYLARI
+            </h1>
+
+            <div class="breadcrumb-custom">
+                <a href="/Admin/AdminDashboard/Index/">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Maç Olayları</span>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="news-container">
+
+    <div class="news-header">
+        <div>
+            <h3>Olay Listesi</h3>
+            <span>@Model.Count olay bulundu</span>
+        </div>
+
+        <div class="news-header-actions">
+
+            <div class="news-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="eventSearch" placeholder="Olay ara...">
+            </div>
+
+            <a href="/Admin/AdminMatchEvent/CreateMatchEvent/" class="btn-add-news">
+                <i class="fa-solid fa-plus"></i>
+                Yeni Olay
+            </a>
+
+        </div>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+
+            <table class="news-table">
+
+                <thead>
+                    <tr>
+                        <th>Olay</th>
+                        <th>Maç</th>
+                        <th>Oyuncu</th>
+                        <th>Dakika</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+
+                <tbody id="eventTableBody">
+
+                    @foreach (var ev in Model)
+                    {
+                            var (icon, cls, label) = ev.EventType switch
+                            {
+                                EventType.Goal          => ("fa-futbol",       "goal",    "Gol"),
+                                EventType.Assist        => ("fa-shoe-prints",  "assist",  "Asist"),
+                                EventType.YellowCard    => ("fa-square",       "yellow",  "Sarı Kart"),
+                                EventType.RedCard       => ("fa-square",       "red",     "Kırmızı Kart"),
+                                EventType.Penalty       => ("fa-circle-dot",   "penalty", "Penaltı"),
+                                EventType.OwnGoal       => ("fa-futbol",       "owngoal", "Kendi Kalesine"),
+                                EventType.Substitution  => ("fa-right-left",   "sub",     "Oyuncu Değişikliği"),
+                                _                       => ("fa-circle-info",  "default", ev.EventType.ToString())
+                            };
+
+                        <tr class="news-row">
+
+                            <td>
+                                <div class="event-cell">
+                                    <div class="event-icon @cls">
+                                        <i class="fa-solid @icon"></i>
+                                    </div>
+                                    <span class="event-type">@label</span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="match-info">
+                                    <i class="fa-solid fa-futbol"></i>
+                                    <span>@ev.FootballMatchName</span>
+                                </div>
+                            </td>
+
+                            <td>
+                                <span class="player-name">@ev.PlayerName</span>
+                            </td>
+
+                            <td>
+                                <span class="minute-badge">@(ev.Minute)'</span>
+                            </td>
+
+                            <td>
+                                <div class="action-buttons">
+                                    <a href="/Admin/AdminMatchEvent/UpdateMatchEvent/@ev.MatchEventId"
+                                       class="action-btn edit"
+                                       title="Düzenle">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                    <a href="/Admin/AdminMatchEvent/DeleteMatchEvent/@ev.MatchEventId"
+                                       class="action-btn delete"
+                                       title="Sil">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+    else
+    {
+        <div class="empty-news">
+            <div class="empty-icon">
+                <i class="fa-regular fa-flag"></i>
+            </div>
+            <h3>Henüz olay yok</h3>
+            <p>Sistemde kayıtlı maç olayı bulunmuyor.</p>
+            <a href="/Admin/AdminMatchEvent/CreateMatchEvent" class="btn-add-news">
+                <i class="fa-solid fa-plus"></i>
+                İlk Olayı Ekle
+            </a>
+        </div>
+    }
+
+</div>
+
+@section Styles {
+    <style>
+
+        .news-container {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .news-header {
+            padding: 22px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .news-header h3 {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 25px;
+                letter-spacing: 1px;
+                margin: 0;
+            }
+
+            .news-header span {
+                color: var(--text-muted);
+                font-size: 12px;
+            }
+
+        .news-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .news-search {
+            position: relative;
+            width: 280px;
+        }
+
+            .news-search i {
+                position: absolute;
+                left: 13px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--text-muted);
+                font-size: 13px;
+            }
+
+            .news-search input {
+                width: 100%;
+                padding: 10px 12px 10px 38px;
+                background: var(--dark-bg);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                color: white;
+                outline: none;
+            }
+
+                .news-search input:focus {
+                    border-color: var(--pl-accent);
+                }
+
+        .btn-add-news {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--pl-purple), var(--pl-pink));
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: .2s;
+        }
+
+            .btn-add-news:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 6px 20px rgba(233,0,82,.3);
+                color: white;
+            }
+
+        .news-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .news-table th {
+                padding: 14px 20px;
+                text-align: left;
+                color: var(--text-muted);
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-weight: 700;
+                background: rgba(255,255,255,0.02);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .news-table td {
+                padding: 16px 20px;
+                border-bottom: 1px solid var(--border);
+                vertical-align: middle;
+                color: var(--text-secondary);
+                font-size: 13px;
+            }
+
+        .news-row {
+            transition: background .2s ease;
+        }
+
+            .news-row:hover {
+                background: var(--dark-hover);
+            }
+
+        /* OLAY HÜCRESİ */
+        .event-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .event-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+
+            .event-icon.goal { background: rgba(0,255,135,.12); color: var(--pl-accent); }
+            .event-icon.assist { background: rgba(4,245,255,.12); color: var(--pl-blue); }
+            .event-icon.yellow { background: rgba(255,215,0,.15); color: #ffd700; }
+            .event-icon.red { background: rgba(233,0,82,.15); color: var(--pl-pink); }
+            .event-icon.penalty { background: rgba(155,89,255,.15); color: #9b59ff; }
+            .event-icon.owngoal { background: rgba(233,0,82,.12); color: var(--pl-pink); }
+            .event-icon.sub { background: rgba(255,255,255,.08); color: var(--text-secondary); }
+            .event-icon.default { background: rgba(255,255,255,.06); color: var(--text-muted); }
+
+        .event-type {
+            color: white;
+            font-weight: 600;
+        }
+
+        .match-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+            .match-info i { color: var(--text-muted); font-size: 12px; }
+
+        .player-name {
+            color: white;
+            font-weight: 500;
+        }
+
+        .minute-badge {
+            display: inline-block;
+            background: rgba(255,255,255,.06);
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .action-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: .2s;
+        }
+
+            .action-btn.delete {
+                background: rgba(233,0,82,.1);
+                color: var(--pl-pink);
+            }
+
+            .action-btn:hover {
+                transform: translateY(-2px);
+            }
+
+        .empty-news {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .empty-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: rgba(0,255,135,.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pl-accent);
+            font-size: 28px;
+        }
+
+        .empty-news h3 { color: white; margin-bottom: 8px; }
+        .empty-news p { color: var(--text-muted); margin-bottom: 20px; }
+
+        @@media (max-width: 1000px) {
+            .news-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .news-header-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .news-search { width: 100%; }
+        }
+
+    </style>
+}
+
+@section Scripts {
+    <script>
+        const searchInput = document.getElementById("eventSearch");
+        if (searchInput) {
+            searchInput.addEventListener("input", function () {
+                const search = this.value.toLowerCase();
+                document.querySelectorAll(".news-row").forEach(row => {
+                    const text = row.innerText.toLowerCase();
+                    row.style.display = text.includes(search) ? "" : "none";
+                });
+            });
+        }
+    </script>
+}

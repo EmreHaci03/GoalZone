@@ -1,0 +1,32 @@
+﻿using GoalZone.DtoLayer.DTOS.MatchEventDto;
+using GoalZone.DtoLayer.DTOS.MatchStatisticDto;
+using GoalZone.EntityLayer.Entities;
+using GoalZone.EntityLayer.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GoalZone.DtoLayer.DTOS.FootballMatchDto
+{
+    public class ResultFootballMatchDto
+    {
+        public int FootballMatchId { get; set; }
+        public int Week { get; set; }
+        public string HomeTeamName { get; set; }
+        public string HomeTeamLogoUrl { get; set; }
+        public string AwayTeamName { get; set; }
+        public string AwayTeamLogoUrl { get; set; }
+        public int? HalfTimeScoreHome { get; set; }
+        public int? HalfTimeScoreAway { get; set; }
+        public int? FullTimeScoreHome { get; set; }
+        public int? FullTimeScoreAway { get; set; }
+        public DateTime MatchDate { get; set; }
+        public string StadiumName { get; set; }
+        public string City { get; set; }
+        public int Capacity { get; set; }
+        public string ImageUrl { get; set; }
+        public string MatchStatus { get; set; }
+    }
+}

@@ -1,0 +1,41 @@
+﻿@using GoalZone.EntityLayer.Enums
+@model List<ResultMatchEventDto>
+
+
+<!-- TIMELINE -->
+<div class="dc">
+    <div class="dc-title">
+        <i class="bi bi-activity me-2" style="color:var(--green)"></i>
+        Maç Olayları
+    </div>
+
+    @await Component.InvokeAsync("MatchStatisticEvents", new { FootballMatchId = ViewBag.FootballMatchId })
+
+</div>
+
+
+<!-- GOALS -->
+<div class="dc">
+    <div class="dc-title">
+        <i class="bi bi-circle-fill me-2"
+           style="color:var(--green);font-size:9px"></i>
+        Goller
+    </div>
+
+    <div class="split2">
+
+        @await Component.InvokeAsync("MatchStatisticHomeTeamGoals", new { FootballMatchId = ViewBag.FootballMatchId })
+
+
+        @await Component.InvokeAsync("MatchStatisticAwayTeamGoals", new { FootballMatchId = ViewBag.FootballMatchId })
+
+    </div>
+</div>
+
+
+<!-- CARDS -->
+@await Component.InvokeAsync("MatchStatisticCards", new { FootballMatchId = ViewBag.FootballMatchId })
+
+
+<!-- SUBSTITUTIONS -->
+@await Component.InvokeAsync("MatchStatisticSubstitutions", new { FootballMatchId = ViewBag.FootballMatchId })

@@ -1,0 +1,63 @@
+﻿@model List<ResultFootballMatchDto>
+
+@foreach (var match in Model)
+{
+    var halfHome = match.HalfTimeScoreHome ?? 0;
+    var halfAway = match.HalfTimeScoreAway ?? 0;
+
+    var fullHome = match.FullTimeScoreHome ?? 0;
+    var fullAway = match.FullTimeScoreAway ?? 0;
+
+    var secondHalfHome = fullHome - halfHome;
+    var secondHalfAway = fullAway - halfAway;
+
+    <div class="dc">
+
+        <div class="dc-title">
+            <i class="bi bi-bar-chart-fill me-2"
+               style="color:var(--blue)"></i>
+            Maç Özeti
+        </div>
+
+        <div class="sc-pills">
+
+            <!-- İLK YARI -->
+            <div class="sc-pill">
+                <div class="sp-lbl">İlk Yarı</div>
+
+                <div class="sp-val">
+                    @halfHome–@halfAway
+                </div>
+            </div>
+
+
+            <!-- İKİNCİ YARI -->
+            <div class="sc-pill">
+                <div class="sp-lbl">İkinci Yarı</div>
+
+                <div class="sp-val">
+                    @secondHalfHome–@secondHalfAway
+                </div>
+            </div>
+
+
+            <!-- MAÇ SONUCU -->
+            <div class="sc-pill">
+
+                <div class="sp-lbl">
+                    Sonuç
+                </div>
+
+                <div class="sp-val"
+                     style="color:var(--green)">
+
+                    @fullHome–@fullAway
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+}

@@ -1,0 +1,428 @@
+﻿@model UpdateStadiumDto
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <span class="accent">STADYUM</span> GÜNCELLE
+            </h1>
+
+            <div class="breadcrumb-custom">
+                <a href="/Admin/Dashboard">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Stadyum Yönetimi</span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Stadyum Güncelle</span>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="stadium-create-container">
+
+    <form asp-area="Admin"
+          asp-controller="AdminStadium"
+          asp-action="UpdateStadium"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="StadiumId" />
+
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+        <!-- SOL: FORM -->
+        <div class="stadium-main">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon blue">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h3>Stadyum Bilgileri</h3>
+                        <span>Stadyumun bilgilerini güncelle</span>
+                    </div>
+                </div>
+
+                <!-- Stadyum Adı -->
+                <div class="form-group">
+                    <label asp-for="StadiumName">Stadyum Adı</label>
+                    <input asp-for="StadiumName"
+                           id="inputName"
+                           class="form-control-custom"
+                           placeholder="Örn: Old Trafford" />
+                    <span asp-validation-for="StadiumName" class="field-error"></span>
+                </div>
+
+                <div class="two-column">
+
+                    <!-- Şehir -->
+                    <div class="form-group">
+                        <label asp-for="City">Şehir</label>
+                        <input asp-for="City"
+                               id="inputCity"
+                               class="form-control-custom"
+                               placeholder="Örn: Manchester" />
+                        <span asp-validation-for="City" class="field-error"></span>
+                    </div>
+
+                    <!-- Kapasite -->
+                    <div class="form-group">
+                        <label asp-for="Capacity">Kapasite</label>
+                        <input asp-for="Capacity"
+                               id="inputCapacity"
+                               type="number"
+                               class="form-control-custom"
+                               placeholder="Örn: 74140" />
+                        <span asp-validation-for="Capacity" class="field-error"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAĞ: ÖNİZLEME + AKSİYON -->
+        <div class="stadium-sidebar">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon green">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <div>
+                        <h3>Önizleme</h3>
+                        <span>Güncel bilgiler</span>
+                    </div>
+                </div>
+
+                <div class="preview-card">
+
+                    <div class="preview-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div class="preview-name" id="previewName">@Model.StadiumName</div>
+
+                    <div class="preview-rows">
+
+                        <div class="preview-row">
+                            <span class="preview-label">
+                                <i class="fa-solid fa-city"></i> Şehir
+                            </span>
+                            <span class="preview-value" id="previewCity">@Model.City</span>
+                        </div>
+
+                        <div class="preview-row">
+                            <span class="preview-label">
+                                <i class="fa-solid fa-users"></i> Kapasite
+                            </span>
+                            <span class="preview-value" id="previewCapacity">@Model.Capacity.ToString("N0")</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+                <a href="/Admin/AdminStadium/Index/" class="btn-cancel">
+                    <i class="fa-solid fa-xmark"></i>
+                    İptal
+                </a>
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Güncelle
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Styles {
+    <style>
+
+        .stadium-create-container {
+            width: 100%;
+        }
+
+            .stadium-create-container form {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 340px;
+                gap: 24px;
+                align-items: start;
+            }
+
+        .stadium-main,
+        .stadium-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-card {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px;
+        }
+
+        .form-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 20px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .form-card-header h3 {
+                margin: 0;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            .form-card-header span {
+                display: block;
+                color: var(--text-muted);
+                font-size: 12px;
+                margin-top: 3px;
+            }
+
+        .header-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .header-icon.blue {
+                background: rgba(4, 245, 255, .1);
+                color: var(--pl-blue);
+            }
+
+            .header-icon.green {
+                background: rgba(0, 255, 135, .1);
+                color: var(--pl-accent);
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group:last-child {
+                margin-bottom: 0;
+            }
+
+            .form-group label {
+                display: block;
+                color: var(--text-secondary);
+                font-size: 13px;
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+
+        .form-control-custom {
+            width: 100%;
+            background: var(--dark-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 11px 13px;
+            color: white;
+            font-size: 13px;
+            outline: none;
+            transition: .2s;
+        }
+
+            .form-control-custom:focus {
+                border-color: var(--pl-accent);
+                box-shadow: 0 0 0 3px rgba(0,255,135,.07);
+            }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .field-error {
+            display: block;
+            color: #ff4d6d;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .validation-summary {
+            color: #ff4d6d;
+            margin-bottom: 15px;
+        }
+
+        /* ÖNİZLEME KARTI */
+
+        .preview-card {
+            text-align: center;
+        }
+
+        .preview-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            border-radius: 14px;
+            background: rgba(4, 245, 255, .1);
+            color: var(--pl-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+        }
+
+        .preview-name {
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            word-break: break-word;
+        }
+
+        .preview-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .preview-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 11px 14px;
+            background: var(--dark-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .preview-label {
+            color: var(--text-muted);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .preview-value {
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* AKSİYONLAR */
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-cancel,
+        .btn-submit {
+            flex: 1;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+            .btn-cancel:hover {
+                color: white;
+                background: var(--dark-hover);
+            }
+
+        .btn-submit {
+            border: none;
+            color: white;
+            background: linear-gradient(135deg, var(--pl-purple), var(--pl-pink));
+        }
+
+            .btn-submit:hover {
+                color: white;
+                transform: translateY(-1px);
+                box-shadow: 0 6px 20px rgba(233,0,82,.3);
+            }
+
+        @@media(max-width: 1000px) {
+
+            .stadium-create-container form {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        const nameInput = document.getElementById("inputName");
+        const cityInput = document.getElementById("inputCity");
+        const capInput = document.getElementById("inputCapacity");
+
+        const previewName = document.getElementById("previewName");
+        const previewCity = document.getElementById("previewCity");
+        const previewCapacity = document.getElementById("previewCapacity");
+
+        if (nameInput) {
+            nameInput.addEventListener("input", function () {
+                previewName.textContent = this.value.trim() || "Stadyum Adı";
+            });
+        }
+
+        if (cityInput) {
+            cityInput.addEventListener("input", function () {
+                previewCity.textContent = this.value.trim() || "—";
+            });
+        }
+
+        if (capInput) {
+            capInput.addEventListener("input", function () {
+                const val = this.value.trim();
+                previewCapacity.textContent = val
+                    ? Number(val).toLocaleString("tr-TR")
+                    : "—";
+            });
+        }
+
+    </script>
+}

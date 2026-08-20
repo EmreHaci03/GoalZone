@@ -1,0 +1,15 @@
+﻿@model List<ResultFootballMatchDto>
+@foreach(var item in Model)
+{
+<div class="dc">
+    <div class="dc-title"><i class="bi bi-info-circle me-2" style="color:var(--t3)"></i>Maç Bilgileri</div>
+    <div class="mi-row"><span class="mi-key">Lig</span><span class="mi-val" style="color:var(--gold)">Premier League</span></div>
+    <div class="mi-row"><span class="mi-key">Sezon</span><span class="mi-val">2025 / 2026</span></div>
+    <div class="mi-row"><span class="mi-key">Hafta</span><span class="mi-val">Hafta @item.Week</span></div>
+    <div class="mi-row"><span class="mi-key">Stadyum</span><span class="mi-val">@item.StadiumName</span></div>
+    <div class="mi-row"><span class="mi-key">Şehir</span><span class="mi-val">@item.City</span></div>
+    <div class="mi-row"><span class="mi-key">Seyirci</span><span class="mi-val">@item.Capacity</span></div>
+    @* <div class="mi-row"><span class="mi-key">Hakem</span><span class="mi-val">Michael Oliver</span></div> *@
+    <div class="mi-row"><span class="mi-key">Tarih</span><span class="mi-val">@item.MatchDate</span></div>
+</div>
+}

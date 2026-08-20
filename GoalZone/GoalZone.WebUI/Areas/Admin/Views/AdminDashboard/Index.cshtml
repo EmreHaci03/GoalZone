@@ -1,0 +1,896 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <span class="accent">DASHBOARD</span>
+            </h1>
+
+            <div class="breadcrumb-custom">
+                <a href="/Admin/Dashboard/Index">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+
+                <i class="fa-solid fa-chevron-right"
+                   style="font-size: 9px;"></i>
+
+                <span>Dashboard</span>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="dashboard-page">
+
+    <!-- =========================
+         WELCOME
+    ========================== -->
+
+    <div class="dashboard-welcome">
+
+        <div>
+            <span class="welcome-label">
+                GOALZONE ADMIN PANEL
+            </span>
+
+            <h2>
+                Hoş Geldin, Admin
+                <span>👋</span>
+            </h2>
+
+            <p>
+                Kulüp yönetim panelinden maçları,
+                istatistikleri ve içerikleri yönetebilirsin.
+            </p>
+        </div>
+
+        <div class="welcome-icon">
+            <i class="fa-solid fa-futbol"></i>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         STAT CARDS
+    ========================== -->
+
+    @await Component.InvokeAsync("AdminDashboard")
+
+
+    <!-- =========================
+         MAIN GRID
+    ========================== -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- =====================
+             SON MAÇLAR Tamam
+        ====================== -->
+
+        <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h3>Son Maçlar</h3>
+
+                    <span>
+                        Son oynanan karşılaşmalar
+                    </span>
+                </div>
+
+                <a href="/Admin/AdminFootballMatch/FootballMatchList">
+                    Tümünü Gör
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+           @await Component.InvokeAsync("AdminRecentMatch")
+
+        </div>
+
+
+        <!-- =====================
+             YAKLAŞAN MAÇLAR
+        ====================== -->
+
+        @await Component.InvokeAsync("AdminUpComingMatch")
+
+    </div>
+
+
+    <!-- =========================
+         BOTTOM GRID
+    ========================== -->
+
+    <div class="dashboard-bottom-grid">
+
+
+        <!-- =====================
+             HIZLI İŞLEMLER Tamam
+        ====================== -->
+
+        <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h3>Hızlı İşlemler</h3>
+
+                    <span>
+                        Yönetim işlemlerine hızlı erişim
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+                <a href="/Admin/AdminFootballMatch/CreateFootballMatch"
+                   class="quick-action">
+
+                    <div class="quick-icon green">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+
+                    <div>
+                        <strong>
+                            Yeni Maç
+                        </strong>
+
+                        <span>
+                            Fikstüre maç ekle
+                        </span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+
+                </a>
+
+
+                <a href="/Admin/AdminMatchStatistic/CreateMatchStatistic"
+                   class="quick-action">
+
+                    <div class="quick-icon blue">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
+
+                    <div>
+                        <strong>
+                            İstatistik Ekle
+                        </strong>
+
+                        <span>
+                            Maç istatistiği oluştur
+                        </span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+
+                </a>
+
+
+                <a href="/Admin/AdminTeam/TeamList/"
+                   class="quick-action">
+
+                    <div class="quick-icon pink">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div>
+                        <strong>
+                            Takım Yönetimi
+                        </strong>
+
+                        <span>
+                            Takımları görüntüle
+                        </span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+
+                </a>
+
+
+                <a href="#"
+                   class="quick-action">
+
+                    <div class="quick-icon purple">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+
+                    <div>
+                        <strong>
+                            Ayarlar
+                        </strong>
+
+                        <span>
+                            Sistem ayarlarını yönet
+                        </span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================
+             PERFORMANS
+        ====================== -->
+
+        @await Component.InvokeAsync("AdminMostGoalMatch")
+
+    </div>
+
+</div>
+
+
+@section Styles {
+
+    <style>
+
+        /* ========================================
+                   DASHBOARD
+                ======================================== */
+
+        .dashboard-page {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+
+        /* ========================================
+                   WELCOME
+                ======================================== */
+
+        .dashboard-welcome {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 30px;
+            border-radius: 14px;
+            background: radial-gradient( circle at 85% 50%, rgba(0,255,135,.12), transparent 35% ), var(--dark-surface);
+            border: 1px solid var(--border);
+        }
+
+
+        .welcome-label {
+            color: var(--pl-accent) !important;
+            font-size: 10px !important;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+
+        .dashboard-welcome h2 {
+            margin: 7px 0 5px;
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+        }
+
+
+            .dashboard-welcome h2 span {
+                font-family: initial;
+                font-size: 22px;
+            }
+
+
+        .dashboard-welcome p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+
+        .welcome-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,255,135,.08);
+            color: var(--pl-accent);
+            font-size: 30px;
+            box-shadow: 0 0 40px rgba(0,255,135,.08);
+        }
+
+
+        /* ========================================
+                   STAT CARDS
+                ======================================== */
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+
+        .dashboard-stat-card {
+            padding: 20px;
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: .2s;
+        }
+
+
+            .dashboard-stat-card:hover {
+                transform: translateY(-2px);
+                border-color: rgba(0,255,135,.25);
+            }
+
+
+        .stat-card-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .stat-card-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            font-size: 14px;
+        }
+
+
+            .stat-card-icon.green,
+            .quick-icon.green {
+                background: rgba(0,255,135,.1);
+                color: var(--pl-accent);
+            }
+
+
+            .stat-card-icon.blue,
+            .quick-icon.blue {
+                background: rgba(4,245,255,.1);
+                color: var(--pl-blue);
+            }
+
+
+            .stat-card-icon.pink,
+            .quick-icon.pink {
+                background: rgba(233,0,82,.1);
+                color: var(--pl-pink);
+            }
+
+
+            .stat-card-icon.purple,
+            .quick-icon.purple {
+                background: rgba(145,70,255,.1);
+                color: #9146ff;
+            }
+
+
+        .stat-card-label {
+            color: var(--text-muted);
+            font-size: 10px !important;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+
+        .stat-card-value {
+            margin-top: 16px;
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 38px;
+            line-height: 1;
+        }
+
+
+        .stat-card-bottom {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            color: var(--text-muted);
+            font-size: 10px;
+        }
+
+
+        .positive {
+            color: var(--pl-accent);
+            font-weight: 700;
+        }
+
+
+        /* ========================================
+                   MAIN GRID
+                ======================================== */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 16px;
+        }
+
+
+        .dashboard-bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+
+        /* ========================================
+                   PANEL
+                ======================================== */
+
+        .dashboard-panel {
+            background: var(--dark-surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+
+            .panel-header h3 {
+                margin: 0 0 4px;
+                color: white;
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+
+
+            .panel-header span {
+                color: var(--text-muted);
+                font-size: 10px;
+            }
+
+
+            .panel-header > a {
+                display: flex;
+                align-items: center;
+                gap: 7px;
+                color: var(--pl-accent);
+                font-size: 10px;
+                font-weight: 700;
+                text-decoration: none;
+            }
+
+
+        /* ========================================
+                   RECENT MATCHES
+                ======================================== */
+
+        .recent-match {
+            padding: 17px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+
+            .recent-match:last-child {
+                border-bottom: none;
+            }
+
+
+        .recent-match-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+
+        .match-status {
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+
+            .match-status.finished {
+                background: rgba(255,255,255,.06);
+                color: var(--text-muted);
+            }
+
+
+        .recent-date {
+            color: var(--text-muted);
+            font-size: 9px;
+        }
+
+
+        .recent-match-teams {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .recent-team {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+            .recent-team.away {
+                justify-content: flex-start;
+            }
+
+
+        .recent-logo {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,.06);
+            color: var(--pl-accent);
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+
+        .recent-score {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+        }
+
+
+            .recent-score span {
+                color: var(--text-muted);
+            }
+
+
+        /* ========================================
+                   UPCOMING
+                ======================================== */
+
+        .upcoming-match {
+            display: grid;
+            grid-template-columns: 55px 1fr auto;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+
+            .upcoming-match:last-child {
+                border-bottom: none;
+            }
+
+
+        .upcoming-date {
+            width: 45px;
+            text-align: center;
+            padding: 6px;
+            background: rgba(0,255,135,.06);
+            border-radius: 8px;
+        }
+
+
+            .upcoming-date strong {
+                display: block;
+                color: var(--pl-accent);
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 21px;
+                line-height: 1;
+            }
+
+
+            .upcoming-date span {
+                color: var(--text-muted);
+                font-size: 7px;
+                font-weight: 700;
+            }
+
+
+        .upcoming-teams {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+            .upcoming-teams small {
+                color: var(--text-muted);
+                font-size: 8px;
+            }
+
+
+        .upcoming-time {
+            color: var(--pl-blue);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+        }
+
+
+        /* ========================================
+                   QUICK ACTIONS
+                ======================================== */
+
+        .quick-actions {
+            padding: 8px 20px 15px;
+        }
+
+
+        .quick-action {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            color: white;
+            text-decoration: none;
+        }
+
+
+            .quick-action:last-child {
+                border-bottom: none;
+            }
+
+
+        .quick-icon {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+
+        .quick-action strong {
+            display: block;
+            font-size: 11px;
+        }
+
+
+        .quick-action span {
+            display: block;
+            margin-top: 3px;
+            color: var(--text-muted);
+            font-size: 9px;
+        }
+
+
+        .quick-action .arrow {
+            margin-left: auto;
+            color: var(--text-muted);
+            font-size: 9px;
+            transition: .2s;
+        }
+
+
+        .quick-action:hover .arrow {
+            color: var(--pl-accent);
+            transform: translateX(3px);
+        }
+
+
+        /* ========================================
+                   PERFORMANCE
+                ======================================== */
+
+        .season-badge {
+            padding: 5px 9px;
+            background: rgba(0,255,135,.08);
+            border-radius: 6px;
+            color: var(--pl-accent) !important;
+            font-size: 9px !important;
+            font-weight: 700;
+        }
+
+
+        .performance-content {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            padding: 28px 25px;
+        }
+
+
+        .performance-circle {
+            width: 135px;
+            height: 135px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: conic-gradient( var(--pl-accent) 0deg 281deg, rgba(255,255,255,.05) 281deg 360deg );
+        }
+
+
+        .circle-inner {
+            width: 105px;
+            height: 105px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark-surface);
+        }
+
+
+            .circle-inner strong {
+                color: white;
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 30px;
+                line-height: 1;
+            }
+
+
+            .circle-inner span {
+                margin-top: 4px;
+                color: var(--text-muted);
+                font-size: 9px;
+            }
+
+
+        .performance-stats {
+            width: 100%;
+        }
+
+
+        .performance-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            color: white;
+            font-size: 11px;
+        }
+
+
+            .performance-item:last-child {
+                border-bottom: none;
+            }
+
+
+            .performance-item span {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+
+            .performance-item strong {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 18px;
+            }
+
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+
+            .dot.green {
+                background: var(--pl-accent);
+            }
+
+
+            .dot.blue {
+                background: var(--pl-blue);
+            }
+
+
+            .dot.pink {
+                background: var(--pl-pink);
+            }
+
+
+        /* ========================================
+                   RESPONSIVE
+                ======================================== */
+
+        @@media (max-width: 1100px) {
+
+            .dashboard-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @@media (max-width: 800px) {
+
+            .dashboard-bottom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-welcome {
+                padding: 22px;
+            }
+
+            .welcome-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 22px;
+            }
+
+            .dashboard-welcome h2 {
+                font-size: 26px;
+            }
+
+            .recent-team span {
+                font-size: 10px;
+            }
+        }
+
+
+        @@media (max-width: 550px) {
+
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .performance-content {
+                flex-direction: column;
+            }
+
+            .upcoming-teams {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+            }
+
+                .upcoming-teams small {
+                    display: none;
+                }
+        }
+
+    </style>
+}

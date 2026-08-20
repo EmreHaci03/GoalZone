@@ -1,0 +1,177 @@
+﻿@model ResultFootballMatchDto
+
+<style>
+    .most-goal-match {
+        overflow: hidden;
+    }
+
+        .most-goal-match .match-highlight {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            padding: 18px 12px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .most-goal-match .team {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-width: 0;
+            width: 150px;
+        }
+
+            .most-goal-match .team img {
+                width: 38px !important;
+                height: 38px !important;
+                min-width: 38px;
+                max-width: 38px !important;
+                object-fit: contain;
+                display: block;
+            }
+
+            .most-goal-match .team span {
+                font-size: 13px;
+                font-weight: 600;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100px;
+            }
+
+        .most-goal-match .match-score {
+            flex-shrink: 0;
+            font-size: 26px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .most-goal-match .match-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 12px;
+            color: #8d94a7;
+            font-size: 12px;
+        }
+
+            .most-goal-match .match-info span {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .most-goal-match .match-info i {
+                font-size: 11px;
+            }
+
+    @@media (max-width: 576px) {
+
+        .most-goal-match .match-highlight {
+            gap: 10px;
+            padding: 14px 6px;
+        }
+
+        .most-goal-match .team {
+            width: 105px;
+            gap: 6px;
+        }
+
+            .most-goal-match .team img {
+                width: 32px !important;
+                height: 32px !important;
+                min-width: 32px;
+                max-width: 32px !important;
+            }
+
+            .most-goal-match .team span {
+                font-size: 11px;
+                max-width: 65px;
+            }
+
+        .most-goal-match .match-score {
+            font-size: 20px;
+        }
+
+        .most-goal-match .match-info {
+            flex-direction: column;
+            gap: 6px;
+        }
+    }
+</style>
+
+
+<div class="dashboard-panel most-goal-match">
+
+    <div class="panel-header">
+
+        <div>
+            <h3>En Gollü Maç</h3>
+
+            <span>
+                Sezonun en çok gol atılan karşılaşması
+            </span>
+        </div>
+
+        <span class="season-badge">
+            2026 / 27
+        </span>
+
+    </div>
+
+
+    <div class="match-highlight">
+
+        <div class="team">
+
+            <img src="@Model?.HomeTeamLogoUrl"
+                 alt="@Model?.HomeTeamName" />
+
+            <span>
+                @Model?.HomeTeamName
+            </span>
+
+        </div>
+
+
+        <strong class="match-score">
+            @(Model?.FullTimeScoreHome ?? 0)
+            -
+            @(Model?.FullTimeScoreAway ?? 0)
+        </strong>
+
+
+        <div class="team">
+
+            <img src="@Model?.AwayTeamLogoUrl"
+                 alt="@Model?.AwayTeamName" />
+
+            <span>
+                @Model?.AwayTeamName
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="match-info">
+
+        <span>
+            <i class="fa-regular fa-calendar"></i>
+            @Model?.MatchDate.ToString("dd.MM.yyyy")
+        </span>
+
+        <span>
+            <i class="fa-solid fa-location-dot"></i>
+            @Model?.StadiumName
+        </span>
+
+    </div>
+
+</div>

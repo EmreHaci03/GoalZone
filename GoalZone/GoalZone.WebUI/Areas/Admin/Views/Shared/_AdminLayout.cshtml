@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+@await Component.InvokeAsync("AdminHead");
+ @RenderSection("Styles", required: false)
+<body>
+
+    <!-- ============ SIDEBAR ============ -->
+    @await Component.InvokeAsync("AdminSideBar");
+
+    <!-- ============ MAIN AREA ============ -->
+    <div class="main-wrapper">
+
+        <!-- TOPBAR -->
+        @await Component.InvokeAsync("AdminTopBar");
+
+        <!-- CONTENT -->
+        <main class="content">
+            @RenderSection("PageHeader", required: false)
+
+            <!-- Stat Cards -->
+           @await Component.InvokeAsync("AdminLayoutStatCards")
+            <div class="content-area">
+                <h3>@RenderBody()</h3>
+            </div>
+        </main>
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

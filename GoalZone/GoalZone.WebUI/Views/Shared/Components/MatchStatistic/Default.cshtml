@@ -1,0 +1,36 @@
+﻿@model List<ResultMatchStatisticDto>
+
+<div class="dc">
+    <div class="dc-title">
+        <i class="bi bi-graph-up me-2" style="color:var(--green)"></i>
+        İstatistikler
+    </div>
+
+    @foreach (var item in Model)
+    {
+        var home = int.TryParse(item.HomeValue?.Replace("%", ""), out var h) ? h : 0;
+        var away = int.TryParse(item.AwayValue?.Replace("%", ""), out var a) ? a : 0;
+
+        var total = home + away;
+        var homePercent = total > 0 ? home * 100 / total : 50;
+        var awayPercent = total > 0 ? away * 100 / total : 50;
+
+        <div class="stat-r">
+            <div class="sv-h">@item.HomeValue</div>
+            <div class="sl">@item.StatName</div>
+            <div class="sv-a">@item.AwayValue</div>
+        </div>
+
+        <div class="bar-r">
+            <div class="bh">
+                <div class="f" style="width:@homePercent%"></div>
+            </div>
+
+            <div></div>
+
+            <div class="ba">
+                <div class="f" style="width:@awayPercent%"></div>
+            </div>
+        </div>
+    }
+</div>

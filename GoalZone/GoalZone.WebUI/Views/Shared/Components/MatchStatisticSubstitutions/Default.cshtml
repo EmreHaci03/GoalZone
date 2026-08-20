@@ -1,0 +1,41 @@
+﻿@using GoalZone.DtoLayer.DTOS.MatchEventDto
+@{
+    var homeSubs = ViewBag.HomeTeamSubstitution as List<GetMatchEventByFootballIdDto>
+                   ?? new List<GetMatchEventByFootballIdDto>();
+    var awaySubs = ViewBag.AwayTeamSubstitution as List<GetMatchEventByFootballIdDto>
+                   ?? new List<GetMatchEventByFootballIdDto>();
+    var homeTeam = homeSubs.FirstOrDefault()?.HomeTeam ?? "Ev Sahibi";
+    var awayTeam = awaySubs.FirstOrDefault()?.AwayTeam ?? "Deplasman";
+}
+<div class="dc">
+    <div class="dc-title">
+        <i class="bi bi-arrow-left-right me-2" style="color:var(--blue)"></i>
+        Oyuncu Değişiklikleri
+    </div>
+
+    <div class="sub-lbl">@homeTeam</div>
+    @foreach (var sub in homeSubs.OrderBy(x => x.Minute))
+    {
+        <div class="sub-r">
+            <div class="sub-min">@sub.Minute'</div>
+            <div class="sub-in">@sub.PlayerName</div>
+        </div>
+    }
+    @if (!homeSubs.Any())
+    {
+        <div class="sub-r"><div class="sub-in" style="color:var(--t2)">Değişiklik yok</div></div>
+    }
+
+    <div class="sub-lbl">@awayTeam</div>
+    @foreach (var sub in awaySubs.OrderBy(x => x.Minute))
+    {
+        <div class="sub-r">
+            <div class="sub-min">@sub.Minute'</div>
+            <div class="sub-in">@sub.PlayerName</div>
+        </div>
+    }
+    @if (!awaySubs.Any())
+    {
+        <div class="sub-r"><div class="sub-in" style="color:var(--t2)">Değişiklik yok</div></div>
+    }
+</div>

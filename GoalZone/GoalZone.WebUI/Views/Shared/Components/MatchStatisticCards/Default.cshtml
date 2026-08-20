@@ -1,0 +1,120 @@
+﻿@using GoalZone.EntityLayer.Enums
+@using GoalZone.DtoLayer.DTOS.MatchEventDto
+
+@{
+    var homeCards = ViewBag.HomeTeamCard as List<GetMatchEventByFootballIdDto>
+                    ?? new List<GetMatchEventByFootballIdDto>();
+
+    var awayCards = ViewBag.AwayTeamCard as List<GetMatchEventByFootballIdDto>
+                    ?? new List<GetMatchEventByFootballIdDto>();
+
+    var homeTeam = homeCards.FirstOrDefault()?.HomeTeam
+                   ?? "Ev Sahibi";
+
+    var awayTeam = awayCards.FirstOrDefault()?.AwayTeam
+                   ?? "Deplasman";
+}
+
+
+<div class="dc">
+
+    <div class="dc-title">
+        <i class="bi bi-square-fill me-2"
+           style="color:var(--yellow);font-size:10px"></i>
+        Kartlar
+    </div>
+
+    <div class="split2">
+
+        <!-- HOME CARDS -->
+        <div class="box2">
+
+            <div class="box2-title">
+                @homeTeam
+            </div>
+
+            @foreach (var card in homeCards.OrderBy(x => x.Minute))
+            {
+                <div class="gl">
+
+                    @if (card.EventType == EventType.RedCard)
+                    {
+                        <div class="rcard"
+                             title="Kırmızı Kart"></div>
+                    }
+                    else if (card.EventType == EventType.YellowCard)
+                    {
+                        <div class="ycard"
+                             title="Sarı Kart"></div>
+                    }
+
+                    <div class="gl-pl">
+                        @card.PlayerName
+                    </div>
+
+                    <div class="gl-min">
+                        @card.Minute'
+                    </div>
+
+                </div>
+            }
+
+            @if (!homeCards.Any())
+            {
+                <div class="gl">
+                    <div class="gl-pl" style="color:var(--t2)">
+                        Kart yok
+                    </div>
+                </div>
+            }
+
+        </div>
+
+
+        <!-- AWAY CARDS -->
+        <div class="box2">
+
+            <div class="box2-title">
+                @awayTeam
+            </div>
+
+            @foreach (var card in awayCards.OrderBy(x => x.Minute))
+            {
+                <div class="gl">
+
+                    @if (card.EventType == EventType.RedCard)
+                    {
+                        <div class="rcard"
+                             title="Kırmızı Kart"></div>
+                    }
+                    else if (card.EventType == EventType.YellowCard)
+                    {
+                        <div class="ycard"
+                             title="Sarı Kart"></div>
+                    }
+
+                    <div class="gl-pl">
+                        @card.PlayerName
+                    </div>
+
+                    <div class="gl-min">
+                        @card.Minute'
+                    </div>
+
+                </div>
+            }
+
+            @if (!awayCards.Any())
+            {
+                <div class="gl">
+                    <div class="gl-pl" style="color:var(--t2)">
+                        Kart yok
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>

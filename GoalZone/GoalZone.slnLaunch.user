@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "GoalZone.WebApi\\GoalZone.WebApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "GoalZone.WebUI\\GoalZone.WebUI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

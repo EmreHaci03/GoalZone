@@ -1,0 +1,81 @@
+﻿@using GoalZone.EntityLayer.Enums
+@model GetFeatureMatchDto
+
+<div class="feat-wrap" id="featWrap">
+    <div class="feat-lbl">Öne Çıkan Maç</div>
+    <a href="/MatchDetail/Index?FootballMatchId=@Model.FootballMatchId" class="feat-card">
+        <div class="row align-items-center g-2">
+            <!-- EV SAHİBİ -->
+            <div class="col-5">
+                <div class="ft-team">
+                    <div class="ft-logo">
+                        <img src="@Model.HomeTeamLogoUrl"
+                             alt="@Model.HomeTeamName" />
+                    </div>
+                    <div class="ft-name">
+                        @Model.HomeTeamName
+                    </div>
+                    <div class="ft-type">
+                        Ev Sahibi
+                    </div>
+                </div>
+            </div>
+
+            <!-- SKOR -->
+            <div class="col-2 text-center">
+                <div class="ft-sc-area">
+
+                    <div class="ft-sc">
+                        @Model.FullTimeScoreHome–@Model.FullTimeScoreAway
+                    </div>
+                    <div class="ft-stat">
+                        <i class="bi bi-check2-circle"></i>
+                        @if (Model.MatchStatus == MatchStatus.NotStarted)
+                        {
+                            <span>GELECEK MAÇ</span>
+                        }
+                    </div>
+                    <div class="ft-meta">
+                        İY:
+                        @Model.HalfTimeScoreHome–@Model.HalfTimeScoreAway
+                        &nbsp;·&nbsp;
+                        @Model.MatchDate.ToString("HH:mm")
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEPLASMAN -->
+            <div class="col-5">
+                <div class="ft-team">
+
+                    <div class="ft-logo">
+                        <img src="@Model.AwayTeamLogoUrl"
+                             alt="@Model.AwayTeamName" />
+                    </div>
+                    <div class="ft-name">
+                        @Model.AwayTeamName
+                    </div>
+                    <div class="ft-type">
+                        Deplasman
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-3"
+             style="font-size:12px;color:var(--t2)">
+
+            <i class="bi bi-geo-alt"></i>
+            @Model.StadiumName
+            &nbsp;·&nbsp;
+            <i class="bi bi-calendar3"></i>
+            @Model.MatchDate.ToString("dd MMMM yyyy")
+            &nbsp;·&nbsp;
+            <span style="color:var(--blue)">
+                Detayları Gör →
+            </span>
+
+        </div>
+
+    </a>
+</div>

@@ -1,0 +1,298 @@
+﻿@model List<ResultFootballMatchDto>
+<style>
+    .upcoming-list {
+        width: 100%;
+    }
+
+    .upcoming-match {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--border);
+    }
+
+        .upcoming-match:last-child {
+            border-bottom: none;
+        }
+
+
+    /* TARİH */
+
+    .upcoming-date {
+        width: 65px;
+        min-width: 65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+        .upcoming-date strong {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .upcoming-date small {
+            margin-top: 3px;
+            font-size: 10px;
+            color: var(--t2);
+        }
+
+
+    /* TAKIMLAR */
+
+    .upcoming-teams {
+        flex: 1;
+        min-width: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr);
+        align-items: center;
+        gap: 12px;
+    }
+
+
+    /* TAKIM */
+
+    .upcoming-team {
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: inherit;
+        text-decoration: none;
+    }
+
+        .upcoming-team.home {
+            justify-content: flex-end;
+        }
+
+        .upcoming-team.away {
+            justify-content: flex-start;
+        }
+
+
+    /* TAKIM ADI */
+
+    .team-name {
+        max-width: 150px;
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    /* LOGO KUTUSU */
+
+    .team-logo-wrap {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        min-height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /* LOGO */
+
+    .upcoming-team-logo {
+        display: block;
+        width: 30px !important;
+        height: 30px !important;
+        max-width: 30px !important;
+        max-height: 30px !important;
+        object-fit: contain;
+    }
+
+
+    /* VS */
+
+    .upcoming-vs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+    }
+
+        .upcoming-vs strong {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--t2);
+        }
+
+        .upcoming-vs span {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--green);
+        }
+
+
+    /* MOBİL */
+
+    @@media (max-width: 700px) {
+        .upcoming-match
+
+    {
+        gap: 8px;
+        padding: 12px 10px;
+    }
+
+    .upcoming-date {
+        width: 48px;
+        min-width: 48px;
+    }
+
+        .upcoming-date strong {
+            font-size: 11px;
+        }
+
+        .upcoming-date small {
+            font-size: 9px;
+        }
+
+    .upcoming-teams {
+        grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr);
+        gap: 5px;
+    }
+
+    .team-name {
+        max-width: 90px;
+        font-size: 11px;
+    }
+
+    .team-logo-wrap {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
+    }
+
+    .upcoming-team-logo {
+        width: 25px !important;
+        height: 25px !important;
+        max-width: 25px !important;
+        max-height: 25px !important;
+    }
+
+    .upcoming-vs strong {
+        font-size: 9px;
+    }
+
+    .upcoming-vs span {
+        font-size: 10px;
+    }
+
+    }
+</style>
+<div class="dashboard-panel">
+
+    <div class="panel-header">
+
+        <div>
+            <h3>Yaklaşan Maçlar</h3>
+
+            <span>
+                Fikstürdeki sonraki maçlar
+            </span>
+        </div>
+
+        <a href="/Admin/AdminFootballMatch/Index">
+            Fikstür
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+
+    <div class="upcoming-list">
+
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <div class="upcoming-match">
+
+                    <!-- TARİH -->
+                    <div class="upcoming-date">
+                        <strong>
+                            @item.MatchDate.ToString("dd MMM")
+                        </strong>
+
+                        <small>
+                            @item.MatchDate.ToString("yyyy")
+                        </small>
+                    </div>
+
+
+                    <!-- MAÇ -->
+                    <div class="upcoming-teams">
+
+                        <!-- HOME -->
+                        <div class="upcoming-team home">
+
+                            <span class="team-name">
+                                @item.HomeTeamName
+                            </span>
+
+                            @if (!string.IsNullOrEmpty(item.HomeTeamLogoUrl))
+                            {
+                                <div class="team-logo-wrap">
+                                    <img src="@item.HomeTeamLogoUrl"
+                                         alt="@item.HomeTeamName"
+                                         class="upcoming-team-logo" />
+                                </div>
+                            }
+
+                        </div>
+
+
+                        <!-- VS -->
+                        <div class="upcoming-vs">
+                            <strong>VS</strong>
+
+                            <span>
+                                @item.MatchDate.ToString("HH:mm")
+                            </span>
+                        </div>
+
+
+                        <!-- AWAY -->
+                        <div class="upcoming-team away">
+
+                            @if (!string.IsNullOrEmpty(item.AwayTeamLogoUrl))
+                            {
+                                <div class="team-logo-wrap">
+                                    <img src="@item.AwayTeamLogoUrl"
+                                         alt="@item.AwayTeamName"
+                                         class="upcoming-team-logo" />
+                                </div>
+                            }
+
+                            <span class="team-name">
+                                @item.AwayTeamName
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+        }
+        else
+        {
+            <div class="text-center py-4" style="color:var(--t2)">
+                Yaklaşan maç bulunmuyor.
+            </div>
+        }
+
+    </div>
+
+</div>

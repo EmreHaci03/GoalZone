@@ -1,0 +1,601 @@
+﻿@using GoalZone.EntityLayer.Enums
+@model CreateNewsDto
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section PageHeader {
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <span class="accent">HABER</span> EKLE
+            </h1>
+
+            <div class="breadcrumb-custom">
+                <a href="/Admin/Dashboard">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Haber Yönetimi</span>
+                <i class="fa-solid fa-chevron-right" style="font-size: 9px;"></i>
+                <span>Haber Ekle</span>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="news-create-container">
+
+    <form asp-area="Admin"
+          asp-controller="AdminNews"
+          asp-action="CreateNews"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly"
+             class="validation-summary"></div>
+
+        <!-- SOL TARAF -->
+        <div class="news-main">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon">
+                        <i class="fa-solid fa-newspaper"></i>
+                    </div>
+
+                    <div>
+                        <h3>Haber Bilgileri</h3>
+                        <span>Haberin temel bilgilerini gir</span>
+                    </div>
+                </div>
+
+                <!-- Başlık -->
+                <div class="form-group">
+                    <label asp-for="Title">
+                        Haber Başlığı
+                    </label>
+
+                    <input asp-for="Title"
+                           class="form-control-custom"
+                           placeholder="Örn: Manchester United yeni transferini açıkladı..." />
+
+                    <span asp-validation-for="Title"
+                          class="field-error"></span>
+                </div>
+
+                <!-- Kısa Açıklama -->
+                <div class="form-group">
+                    <label asp-for="ShortDescription">
+                        Kısa Açıklama
+                    </label>
+
+                    <textarea asp-for="ShortDescription"
+                              class="form-control-custom textarea-short"
+                              placeholder="Haberin kısa açıklamasını yaz..."></textarea>
+
+                    <span asp-validation-for="ShortDescription"
+                          class="field-error"></span>
+                </div>
+
+                <!-- İçerik -->
+                <div class="form-group">
+                    <label asp-for="Content">
+                        Haber İçeriği
+                    </label>
+
+                    <textarea asp-for="Content"
+                              class="form-control-custom textarea-content"
+                              placeholder="Haber içeriğini buraya yaz..."></textarea>
+
+                    <span asp-validation-for="Content"
+                          class="field-error"></span>
+                </div>
+
+            </div>
+
+
+            <!-- GÖRSEL -->
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon pink">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+
+                    <div>
+                        <h3>Görsel</h3>
+                        <span>Haber görselinin adresini gir</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ImageUrl">
+                        Görsel URL
+                    </label>
+
+                    <input asp-for="ImageUrl"
+                           class="form-control-custom"
+                           placeholder="https://..." />
+
+                    <span asp-validation-for="ImageUrl"
+                          class="field-error"></span>
+                </div>
+
+            </div>
+
+
+            <!-- KAYNAK -->
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon blue">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+
+                    <div>
+                        <h3>Kaynak Bilgileri</h3>
+                        <span>Haberin kaynağını belirt</span>
+                    </div>
+                </div>
+
+                <div class="two-column">
+
+                    <div class="form-group">
+                        <label asp-for="Source">
+                            Kaynak
+                        </label>
+
+                        <input asp-for="Source"
+                               class="form-control-custom"
+                               placeholder="Örn: GoalZone" />
+
+                        <span asp-validation-for="Source"
+                              class="field-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="SourceUrl">
+                            Kaynak URL
+                        </label>
+
+                        <input asp-for="SourceUrl"
+                               class="form-control-custom"
+                               placeholder="https://..." />
+
+                        <span asp-validation-for="SourceUrl"
+                              class="field-error"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAĞ TARAF -->
+        <div class="news-sidebar">
+
+            <!-- YAYIN BİLGİLERİ -->
+            <div class="form-card">
+
+                <div class="form-card-header">
+                    <div class="header-icon green">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+
+                    <div>
+                        <h3>Yayın Ayarları</h3>
+                        <span>Haber seçenekleri</span>
+                    </div>
+                </div>
+
+
+                <!-- Tarih -->
+                <div class="form-group">
+                    <label asp-for="PublishDate">
+                        Yayın Tarihi
+                    </label>
+
+                    <input asp-for="PublishDate"
+                           type="datetime-local"
+                           class="form-control-custom" />
+
+                    <span asp-validation-for="PublishDate"
+                          class="field-error"></span>
+                </div>
+
+
+                <!-- Kategori -->
+                <div class="form-group">
+                    <label asp-for="Category">
+                        Kategori
+                    </label>
+
+                    <select asp-for="Category"
+                            class="form-control-custom"
+                            asp-items="Html.GetEnumSelectList<NewsCategory>()">
+
+                        <option value="">
+                            Kategori seçiniz
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="Category"
+                          class="field-error"></span>
+                </div>
+
+
+                <!-- Takım -->
+                <div class="form-group">
+                    <label asp-for="RelatedTeamId">
+                        İlgili Takım
+                    </label>
+
+                    <select asp-for="RelatedTeamId"
+                            class="form-control-custom"
+                            asp-items="ViewBag.Teams ">
+
+                        <option value="">
+                            Takım seçiniz (Opsiyonel)
+                        </option>
+
+                    </select>
+
+                    <span asp-validation-for="RelatedTeamId"
+                          class="field-error"></span>
+
+                    <small class="form-help">
+                        Haber belirli bir takımla ilgili değilse boş bırakabilirsin.
+                    </small>
+                </div>
+
+
+                <!-- Etiket -->
+                <div class="form-group">
+                    <label asp-for="Tags">
+                        Etiketler
+                    </label>
+
+                    <input asp-for="Tags"
+                           class="form-control-custom"
+                           placeholder="Transfer, Manchester United, Premier League" />
+
+                    <small class="form-help">
+                        Etiketleri virgülle ayır.
+                    </small>
+
+                    <span asp-validation-for="Tags"
+                          class="field-error"></span>
+                </div>
+
+
+                <!-- Öne Çıkan -->
+                <div class="featured-box">
+
+                    <div>
+                        <strong>Öne Çıkan Haber</strong>
+                        <small>
+                            Haberi ana sayfada öne çıkar
+                        </small>
+                    </div>
+
+                    <label class="switch">
+                        <input asp-for="IsFeatured"
+                               type="checkbox" />
+
+                        <span class="slider"></span>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTONLAR -->
+            <div class="form-actions">
+
+                <a href="/Admin/News"
+                   class="btn-cancel">
+                    <i class="fa-solid fa-xmark"></i>
+                    İptal
+                </a>
+
+                <button type="submit"
+                        class="btn-submit">
+                    <i class="fa-solid fa-plus"></i>
+                    Haberi Oluştur
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+@section Styles {
+
+<style>
+
+    .news-create-container {
+        width: 100%;
+    }
+
+    .news-create-container form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 380px;
+        gap: 24px;
+        align-items: start;
+    }
+
+    .news-main,
+    .news-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-card {
+        background: var(--dark-surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 26px;
+    }
+
+    .form-card-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding-bottom: 20px;
+        margin-bottom: 22px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .form-card-header h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .form-card-header span {
+        display: block;
+        color: var(--text-muted);
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    .header-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: rgba(0, 255, 135, .1);
+        color: var(--pl-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-icon.pink {
+        background: rgba(233, 0, 82, .12);
+        color: var(--pl-pink);
+    }
+
+    .header-icon.blue {
+        background: rgba(4, 245, 255, .1);
+        color: var(--pl-blue);
+    }
+
+    .header-icon.green {
+        background: rgba(0, 255, 135, .1);
+        color: var(--pl-accent);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group:last-child {
+        margin-bottom: 0;
+    }
+
+    .form-group label {
+        display: block;
+        color: var(--text-secondary);
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .form-control-custom {
+        width: 100%;
+        background: var(--dark-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 11px 13px;
+        color: white;
+        font-size: 13px;
+        outline: none;
+        transition: .2s;
+    }
+
+    .form-control-custom:focus {
+        border-color: var(--pl-accent);
+        box-shadow: 0 0 0 3px rgba(0,255,135,.07);
+    }
+
+    textarea.form-control-custom {
+        resize: vertical;
+        line-height: 1.6;
+    }
+
+    .textarea-short {
+        min-height: 90px;
+    }
+
+    .textarea-content {
+        min-height: 240px;
+    }
+
+    .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .form-help {
+        display: block;
+        color: var(--text-muted);
+        font-size: 11px;
+        margin-top: 6px;
+    }
+
+    .field-error {
+        display: block;
+        color: #ff4d6d;
+        font-size: 11px;
+        margin-top: 5px;
+    }
+
+    .validation-summary {
+        color: #ff4d6d;
+        margin-bottom: 15px;
+    }
+
+    .featured-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: var(--dark-bg);
+    }
+
+    .featured-box strong {
+        display: block;
+        font-size: 13px;
+    }
+
+    .featured-box small {
+        display: block;
+        color: var(--text-muted);
+        font-size: 11px;
+        margin-top: 4px;
+    }
+
+    /* SWITCH */
+
+    .switch {
+        position: relative;
+        width: 46px;
+        height: 25px;
+        margin: 0;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        inset: 0;
+        background: #333340;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+    .slider:before {
+        content: "";
+        position: absolute;
+        width: 19px;
+        height: 19px;
+        left: 3px;
+        top: 3px;
+        background: white;
+        border-radius: 50%;
+        transition: .2s;
+    }
+
+    .switch input:checked + .slider {
+        background: var(--pl-accent);
+    }
+
+    .switch input:checked + .slider:before {
+        transform: translateX(21px);
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-cancel,
+    .btn-submit {
+        flex: 1;
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+    }
+
+    .btn-cancel {
+        background: var(--dark-surface);
+        border: 1px solid var(--border);
+        color: var(--text-secondary);
+    }
+
+    .btn-cancel:hover {
+        color: white;
+        background: var(--dark-hover);
+    }
+
+    .btn-submit {
+        border: none;
+        color: white;
+        background: linear-gradient(135deg, var(--pl-purple), var(--pl-pink));
+    }
+
+    .btn-submit:hover {
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(233,0,82,.3);
+    }
+
+    @@media(max-width: 1000px) {
+
+        .news-create-container form {
+            grid-template-columns: 1fr;
+        }
+
+        .two-column {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+</style>
+
+}
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}
